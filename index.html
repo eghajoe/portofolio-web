@@ -3,605 +3,1234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EghaApp Studio</title>
-    
+    <meta name="theme-color" content="#07182f">
+
+    <title>EghaApp Studio | Portfolio</title>
+    <meta name="description" content="Portfolio Helga Rizka Putra Prayoga - Software Engineer, Full Stack Developer, 3D & Embroidery, AI-Assisted Development.">
+
+    <!-- Favicon asli -->
     <link rel="icon" href="LOGO_WEB.ico" type="image/x-icon">
     <link rel="icon" href="LOGO_WEB.png" type="image/png">
-    
+
+    <!-- Bootstrap & Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        /* 1. KUNCI UTAMA SMOOTH SCROLLING */
-        html { scroll-behavior: smooth; }
-
-        /* TEMA WARNA CUSTOM (NAVY & GOLD) */
-        :root {
-            --navy: #14213D;
-            --navy-light: #1e325c;
-            --gold: #D4AF37;
-            --gold-hover: #f3c63a;
+        :root{
+            --navy-950:#04101f;
+            --navy-900:#07182f;
+            --navy-850:#0a1e3b;
+            --navy-800:#10284a;
+            --navy:#14213D;
+            --gold:#D4AF37;
+            --gold-bright:#f5bb22;
+            --gold-soft:#fff4cf;
+            --white:#ffffff;
+            --bg:#f7f9fc;
+            --text:#0c1d35;
+            --muted:#607086;
+            --border:rgba(13,39,75,.10);
+            --shadow:0 15px 45px rgba(7,24,47,.08);
+            --shadow-dark:0 20px 50px rgba(0,0,0,.20);
         }
 
-        body {
-            padding-top: 70px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8fafc;
+        *{box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{
+            margin:0;
+            font-family:'Inter',sans-serif;
+            color:var(--text);
+            background:#fff;
+            line-height:1.65;
+            overflow-x:hidden;
+        }
+        a{text-decoration:none}
+        img{max-width:100%;display:block}
+        .container-custom{
+            width:min(1180px,calc(100% - 40px));
+            margin:auto;
         }
 
-        /* 2. Desain Navbar Navy & Gold */
-        .navbar-custom {
-            background-color: var(--navy);
-            border-bottom: 2px solid var(--gold);
+        /* NAVBAR */
+        .navbar-custom{
+            background:rgba(4,16,31,.90);
+            backdrop-filter:blur(16px);
+            border-bottom:1px solid rgba(212,175,55,.22);
+            transition:.3s ease;
         }
-        .navbar-custom .nav-link, .navbar-custom .navbar-brand {
-            color: #ffffff;
-            font-weight: bold;
-            transition: color 0.3s;
+        .navbar-custom.scrolled{
+            background:rgba(4,16,31,.97);
+            box-shadow:0 6px 28px rgba(0,0,0,.18);
         }
-        .navbar-custom .nav-link:hover {
-            color: var(--gold);
+        .navbar-brand{
+            font-family:'Manrope',sans-serif;
+            font-weight:800;
+            color:#fff!important;
+            display:flex;
+            align-items:center;
+            gap:10px;
         }
-        .navbar-toggler {
-            border-color: var(--gold);
+        .navbar-brand strong{color:var(--gold-bright)}
+        .brand-logo{
+            width:38px;height:38px;object-fit:contain;
+            border-radius:50%;
         }
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(212, 175, 55, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        .navbar-custom .nav-link{
+            color:rgba(255,255,255,.82)!important;
+            font-size:.92rem;
+            font-weight:600;
+            margin:0 .45rem;
+            position:relative;
+            transition:.25s;
         }
-
-        /* =========================================
-           TAMBAHAN ELEMEN REKAAN GRAFIK 
-           ========================================= */
-        .bg-glow-container {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--navy) 0%, #0d1527 100%);
-            z-index: 1;
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active{color:var(--gold-bright)!important}
+        .navbar-custom .nav-link::after{
+            content:"";
+            position:absolute;
+            left:.5rem;right:.5rem;bottom:0;
+            height:2px;border-radius:2px;
+            background:var(--gold-bright);
+            transform:scaleX(0);
+            transition:.25s;
         }
-        .bg-glow-container::before, .bg-glow-container::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(90px);
-            z-index: -1;
-            pointer-events: none;
+        .navbar-custom .nav-link:hover::after,
+        .navbar-custom .nav-link.active::after{transform:scaleX(1)}
+        .navbar-toggler{
+            border:1px solid rgba(212,175,55,.75)!important;
+            box-shadow:none!important;
         }
-        .bg-glow-container::before {
-            width: 400px; height: 400px;
-            background: rgba(212, 175, 55, 0.15);
-            top: -100px; left: -150px;
+        .navbar-toggler-icon{
+            background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(245,187,34,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
-        .bg-glow-container::after {
-            width: 500px; height: 500px;
-            background: rgba(30, 50, 92, 0.6);
-            bottom: -150px; right: -150px;
+        .nav-contact{
+            border:1px solid rgba(255,255,255,.5);
+            color:#fff!important;
+            border-radius:10px;
+            padding:.55rem .95rem!important;
+            transition:.25s;
         }
-
-        .bg-pattern {
-            background-color: #f8fafc;
-            background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1.5' fill='%23D4AF37' fill-opacity='0.15'/%3E%3C/svg%3E");
-        }
-
-        /* 3. Desain Hero Section */
-        .hero-section {
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-        }
-        .hero-img {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid var(--gold);
-            margin-bottom: 20px;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); 
-            transition: transform 0.5s ease;
-        }
-        .hero-img:hover {
-            transform: scale(1.05);
-        }
-        .text-gold { color: var(--gold) !important; }
-
-        /* 4. Desain Kartu Portofolio */
-        .portfolio-card {
-            border: none;
-            border-top: 5px solid var(--gold); 
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: rgba(255, 255, 255, 0.95); 
-            cursor: pointer;
-            position: relative;
-            overflow: hidden; 
-            z-index: 2;
-        }
-        .portfolio-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(20, 33, 61, 0.12);
-        }
-        .portfolio-icon {
-            font-size: 3.5rem;
-            color: var(--navy);
-            transition: all 0.3s;
-            position: relative;
-            z-index: 2;
-        }
-        .portfolio-card:hover .portfolio-icon {
-            color: var(--gold);
-            transform: scale(1.1);
-        }
-        
-        /* Ikon Watermark Gergasi di dalam Kad */
-        .watermark-icon {
-            position: absolute;
-            right: -20px;
-            bottom: -30px;
-            font-size: 10rem;
-            color: var(--navy);
-            opacity: 0.03; 
-            transform: rotate(-15deg);
-            z-index: 0;
-            transition: all 0.5s;
-        }
-        .portfolio-card:hover .watermark-icon {
-            opacity: 0.06;
-            transform: rotate(0deg) scale(1.1);
-            color: var(--gold);
+        .nav-contact:hover{
+            background:var(--gold-bright);
+            border-color:var(--gold-bright);
+            color:var(--navy-950)!important;
         }
 
-        .click-hint {
-            font-size: 0.85rem;
-            color: var(--navy-light);
-            font-weight: 600;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-            position: relative;
-            z-index: 2;
+        /* HERO */
+        .hero-section{
+            min-height:720px;
+            display:flex;
+            align-items:center;
+            position:relative;
+            overflow:hidden;
+            padding:120px 0 80px;
+            color:#fff;
+            background:
+                radial-gradient(circle at 82% 34%, rgba(36,87,145,.32), transparent 28%),
+                radial-gradient(circle at 20% 15%, rgba(22,70,128,.25), transparent 26%),
+                linear-gradient(135deg,#04101f 0%,#07182f 52%,#0c2446 100%);
         }
-        .portfolio-card:hover .click-hint {
-            opacity: 1;
-            color: var(--gold);
+        .hero-section::before{
+            content:"";
+            position:absolute;
+            width:460px;height:460px;border-radius:50%;
+            right:-110px;top:55px;
+            background:rgba(255,255,255,.025);
+        }
+        .hero-grid{
+            position:relative;z-index:2;
+            display:grid;
+            grid-template-columns:1.08fr .92fr;
+            gap:65px;
+            align-items:center;
+        }
+        .hello-badge{
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            padding:8px 14px;
+            border-radius:999px;
+            background:rgba(255,255,255,.06);
+            border:1px solid rgba(255,255,255,.08);
+            color:rgba(255,255,255,.86);
+            font-size:.84rem;
+            margin-bottom:24px;
+        }
+        .hero-title{
+            font-family:'Manrope',sans-serif;
+            font-weight:800;
+            font-size:clamp(2.7rem,5vw,4.4rem);
+            line-height:1.04;
+            letter-spacing:-2px;
+            margin:0 0 20px;
+        }
+        .hero-title .gold{display:block;color:var(--gold-bright)}
+        .hero-role{
+            font-size:1.15rem;
+            font-weight:500;
+            color:rgba(255,255,255,.94);
+            margin-bottom:18px;
+        }
+        .hero-desc{
+            max-width:560px;
+            color:rgba(255,255,255,.68);
+            font-size:.96rem;
+            margin-bottom:30px;
+        }
+        .hero-actions{
+            display:flex;flex-wrap:wrap;gap:12px;
+            margin-bottom:34px;
+        }
+        .btn-gold{
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            gap:9px;
+            min-height:48px;
+            padding:0 22px;
+            border-radius:10px;
+            background:linear-gradient(135deg,#ffd65a,#e8aa12);
+            color:var(--navy-950)!important;
+            font-weight:700;
+            border:0;
+            box-shadow:0 10px 30px rgba(245,187,34,.18);
+            transition:.25s;
+        }
+        .btn-gold:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(245,187,34,.26)}
+        .btn-ghost{
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            gap:9px;
+            min-height:48px;
+            padding:0 22px;
+            border-radius:10px;
+            color:#fff!important;
+            border:1px solid rgba(255,255,255,.62);
+            background:rgba(255,255,255,.025);
+            font-weight:600;
+            transition:.25s;
+        }
+        .btn-ghost:hover{background:#fff;color:var(--navy-950)!important;transform:translateY(-3px)}
+        .social-label{
+            font-size:.79rem;color:rgba(255,255,255,.55);margin-bottom:10px;
+        }
+        .hero-social{display:flex;gap:10px;flex-wrap:wrap}
+        .social-circle{
+            width:44px;height:44px;border-radius:50%;
+            display:grid;place-items:center;
+            border:1px solid rgba(255,255,255,.18);
+            color:#fff;
+            transition:.25s;
+        }
+        .social-circle:hover{
+            background:var(--gold-bright);
+            border-color:var(--gold-bright);
+            color:var(--navy-950);
+            transform:translateY(-4px);
         }
 
-        /* 5. Desain Modal (Pop-up) */
-        .modal-content {
-            border-radius: 15px;
-            border: none;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        /* PROFILE */
+        .hero-photo-area{
+            min-height:500px;
+            position:relative;
+            display:flex;
+            align-items:center;
+            justify-content:center;
         }
-        .modal-header {
-            background-color: var(--navy);
-            color: var(--gold);
-            border-bottom: 3px solid var(--gold);
+        .profile-glow{
+            position:absolute;
+            width:390px;height:390px;border-radius:50%;
+            background:rgba(19,53,98,.56);
         }
-        .btn-close-custom {
-            filter: invert(75%) sepia(34%) saturate(735%) hue-rotate(3deg) brightness(97%) contrast(93%);
+        .profile-ring{
+            position:relative;
+            z-index:2;
+            width:330px;height:330px;border-radius:50%;
+            padding:7px;
+            background:linear-gradient(135deg,#ffd65a,#cf9700);
+            box-shadow:0 0 0 13px rgba(255,255,255,.035),0 30px 60px rgba(0,0,0,.32);
         }
-        .modal-body {
-            background-color: #f8fafc;
-            color: #333;
-            line-height: 1.6;
+        .profile-ring::after{
+            content:"";
+            position:absolute;inset:7px;
+            border-radius:50%;
+            box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);
+            pointer-events:none;
+        }
+        .hero-img{
+            width:100%;height:100%;
+            object-fit:cover;
+            object-position:center top;
+            border-radius:50%;
+            background:#d7192d;
+        }
+        .dot-grid{
+            position:absolute;
+            width:145px;height:145px;
+            right:5px;bottom:55px;
+            opacity:.24;
+            background-image:radial-gradient(rgba(255,255,255,.72) 1.6px,transparent 1.6px);
+            background-size:17px 17px;
+        }
+        .profile-note{
+            position:absolute;
+            right:18px;bottom:22px;
+            transform:rotate(-5deg);
+            color:rgba(255,255,255,.75);
+            font-size:.82rem;
+            font-style:italic;
+            text-align:center;
+        }
+        .profile-note::after{
+            content:"";display:block;width:70px;height:2px;border-radius:2px;
+            background:var(--gold-bright);margin:7px auto 0;
         }
 
-        /* Desain Custom Tombol Kontak & Footer */
-        .btn-outline-gold {
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            transition: all 0.3s;
-            background: transparent;
+        /* COMMON SECTION */
+        section[id]{scroll-margin-top:75px}
+        .section{padding:88px 0}
+        .section-kicker{
+            color:#b47f00;
+            font-size:.78rem;
+            letter-spacing:.08em;
+            font-weight:800;
+            text-transform:uppercase;
+            margin-bottom:7px;
         }
-        .btn-outline-gold:hover {
-            background-color: var(--gold);
-            color: var(--navy);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        .section-title{
+            font-family:'Manrope',sans-serif;
+            font-size:clamp(2rem,4vw,2.65rem);
+            font-weight:800;
+            line-height:1.15;
+            letter-spacing:-1px;
+            margin:0 0 13px;
         }
-        .btn-solid-gold {
-            background-color: var(--gold); 
-            color: var(--navy); 
-            font-weight: bold;
-            border: 2px solid var(--gold);
-            transition: all 0.3s;
-        }
-        .btn-solid-gold:hover {
-            background-color: #f3c63a;
-            border-color: #f3c63a;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
-        }
-        
-        /* Link Footer Hover */
-        .footer-link {
-            color: #a0aec0;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .footer-link:hover {
-            color: var(--gold);
+        .title-line{
+            width:55px;height:3px;border-radius:3px;background:var(--gold-bright);margin-bottom:34px;
         }
 
-        /* =========================================
-           DESAIN FLOATING CHATBOT 
-           ========================================= */
-        #chat-container { position: fixed; bottom: 20px; right: 20px; z-index: 1050; display: flex; flex-direction: column; align-items: flex-end; }
-        
-        /* Jendela Chat */
-        #chat-window { width: 340px; max-width: 90vw; background: white; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); overflow: hidden; display: none; flex-direction: column; border: 2px solid var(--gold); margin-bottom: 15px; transform-origin: bottom right; animation: popUp 0.3s ease-out forwards; }
-        @keyframes popUp { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
-        
-        /* Header Chat */
-        #chat-header { background: var(--navy); color: var(--gold); padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
-        
-        /* Area Pesan */
-        #chat-messages { height: 320px; overflow-y: auto; padding: 15px; background: #f8fafc; display: flex; flex-direction: column; gap: 12px; }
-        .msg-bubble { max-width: 85%; padding: 10px 15px; border-radius: 15px; font-size: 0.9rem; line-height: 1.4; animation: fadeInMsg 0.3s ease-in; }
-        @keyframes fadeInMsg { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .msg-bot { background: white; border: 1px solid #e2e8f0; align-self: flex-start; border-bottom-left-radius: 2px; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .msg-user { background: var(--navy); color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
-        
-        /* Area Tombol Opsi Pertanyaan */
-        #chat-options { padding: 12px; background: white; border-top: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 8px; }
-        .chat-opt-btn { background: white; border: 1px solid var(--gold); color: var(--navy); padding: 8px 12px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; text-align: left; font-weight: 500; }
-        .chat-opt-btn:hover { background: var(--gold); color: white; }
+        /* ABOUT */
+        .about-section{background:#f7f9fc}
+        .about-grid{
+            display:grid;
+            grid-template-columns:.9fr 1.1fr;
+            gap:60px;
+            align-items:center;
+        }
+        .about-visual{
+            min-height:420px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            position:relative;
+            border-radius:28px;
+            background:
+                radial-gradient(circle at 30% 30%,rgba(212,175,55,.16),transparent 34%),
+                linear-gradient(145deg,#0a1d37,#102a4f);
+            overflow:hidden;
+            box-shadow:var(--shadow);
+        }
+        .about-visual img{
+            width:72%;max-width:340px;aspect-ratio:1/1;
+            border-radius:26px;
+            object-fit:cover;
+            object-position:center top;
+            border:3px solid rgba(212,175,55,.8);
+            box-shadow:0 20px 55px rgba(0,0,0,.28);
+        }
+        .about-visual::after{
+            content:"EA";
+            position:absolute;right:-10px;bottom:-85px;
+            font-family:'Manrope',sans-serif;
+            font-size:13rem;font-weight:800;
+            color:rgba(255,255,255,.035);
+        }
+        .about-copy p{color:var(--muted);margin-bottom:16px}
+        .about-tags{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:12px;
+            margin-top:28px;
+        }
+        .about-tag{
+            background:#fff;
+            border:1px solid var(--border);
+            border-radius:15px;
+            padding:18px;
+            box-shadow:0 8px 28px rgba(7,24,47,.05);
+            display:flex;align-items:center;gap:12px;
+        }
+        .about-tag i{
+            width:42px;height:42px;border-radius:12px;
+            display:grid;place-items:center;
+            background:var(--gold-soft);
+            color:var(--navy-900);
+            font-size:1.2rem;
+        }
+        .about-tag strong{display:block;font-size:.92rem}
+        .about-tag span{display:block;color:var(--muted);font-size:.75rem;margin-top:2px}
 
-        /* Tombol Mengambang (Floating Button) */
-        #chat-toggle-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--gold); color: var(--navy); border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.3); font-size: 1.8rem; cursor: pointer; transition: transform 0.3s; display: flex; justify-content: center; align-items: center; }
-        #chat-toggle-btn:hover { transform: scale(1.1) rotate(5deg); }
-        
-        /* Typing Indicator */
-        .typing-dots span { display: inline-block; width: 6px; height: 6px; background-color: #a0aec0; border-radius: 50%; margin: 0 2px; animation: bounce 1.4s infinite ease-in-out both; }
-        .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
-        .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+        /* SKILLS */
+        .skills-section{
+            background:
+                radial-gradient(circle at top right,#f0f4f9 0,transparent 34%),
+                #fff;
+        }
+        .skill-grid{
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:18px;
+        }
+        .skill-card{
+            min-height:305px;
+            padding:27px 23px;
+            border-radius:18px;
+            background:#fff;
+            border:1px solid var(--border);
+            box-shadow:var(--shadow);
+            display:flex;flex-direction:column;
+            cursor:pointer;
+            position:relative;
+            overflow:hidden;
+            transition:.3s;
+        }
+        .skill-card::before{
+            content:"";
+            position:absolute;inset:0 auto auto 0;
+            width:100%;height:3px;background:var(--gold-bright);
+        }
+        .skill-card:hover{
+            transform:translateY(-8px);
+            border-color:rgba(212,175,55,.35);
+            box-shadow:0 20px 50px rgba(7,24,47,.12);
+        }
+        .skill-icon{
+            width:60px;height:60px;
+            display:grid;place-items:center;
+            border-radius:15px;
+            background:linear-gradient(135deg,#fff9e9,#ffedb6);
+            color:var(--navy-900);
+            font-size:1.65rem;
+            margin-bottom:20px;
+            position:relative;z-index:2;
+        }
+        .skill-card h3{font-size:1.04rem;font-weight:800;margin-bottom:10px;position:relative;z-index:2}
+        .skill-card p{font-size:.83rem;color:var(--muted);flex:1;position:relative;z-index:2}
+        .skill-link{color:#ad7900;font-size:.8rem;font-weight:700;position:relative;z-index:2}
+        .skill-link i{margin-left:6px;transition:.25s}
+        .skill-card:hover .skill-link i{transform:translateX(5px)}
+        .watermark-icon{
+            position:absolute;
+            right:-15px;bottom:-30px;
+            font-size:9rem;
+            color:var(--navy-900);
+            opacity:.025;
+            transform:rotate(-15deg);
+            transition:.3s;
+        }
+        .skill-card:hover .watermark-icon{opacity:.055;transform:rotate(0) scale(1.06)}
+
+        /* CONTACT */
+        .contact-section{
+            position:relative;
+            color:#fff;
+            background:
+                radial-gradient(circle at 80% 20%,rgba(20,69,123,.42),transparent 30%),
+                linear-gradient(135deg,#04101f,#092042);
+            padding:84px 0 44px;
+        }
+        .contact-grid{
+            display:grid;
+            grid-template-columns:.9fr 1.1fr;
+            gap:55px;
+            align-items:center;
+        }
+        .contact-title{
+            font-family:'Manrope',sans-serif;
+            font-size:clamp(2.1rem,4vw,3.1rem);
+            font-weight:800;
+            line-height:1.13;
+            margin:10px 0 17px;
+        }
+        .contact-title span{color:var(--gold-bright);display:block}
+        .contact-desc{color:rgba(255,255,255,.66);font-size:.93rem;max-width:500px;margin-bottom:27px}
+        .contact-actions{display:flex;gap:12px;flex-wrap:wrap}
+        .contact-box{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            border:1px solid rgba(255,255,255,.11);
+            border-radius:18px;
+            overflow:hidden;
+            background:rgba(255,255,255,.025);
+            backdrop-filter:blur(10px);
+        }
+        .contact-item{
+            display:flex;align-items:center;gap:13px;
+            padding:18px;
+            color:#fff;
+            border-right:1px solid rgba(255,255,255,.06);
+            border-bottom:1px solid rgba(255,255,255,.06);
+            transition:.25s;
+        }
+        .contact-item:hover{background:rgba(255,255,255,.05)}
+        .contact-icon{
+            flex:0 0 auto;
+            width:43px;height:43px;border-radius:50%;
+            display:grid;place-items:center;
+            background:rgba(255,255,255,.06);
+            color:var(--gold-bright);
+            font-size:1.15rem;
+        }
+        .contact-item strong{display:block;font-size:.78rem}
+        .contact-item span{display:block;color:rgba(255,255,255,.56);font-size:.70rem;word-break:break-word}
+
+        /* FOOTER */
+        footer{
+            margin-top:55px;
+            padding-top:26px;
+            border-top:1px solid rgba(255,255,255,.09);
+        }
+        .footer-inner{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:20px;
+            color:rgba(255,255,255,.54);
+            font-size:.75rem;
+        }
+        .footer-inner strong{color:#fff}
+        .footer-links{display:flex;gap:20px;flex-wrap:wrap}
+        .footer-link{color:rgba(255,255,255,.54);transition:.25s}
+        .footer-link:hover{color:var(--gold-bright)}
+        .cf-badge{
+            display:inline-flex;align-items:center;gap:8px;
+            margin-top:18px;
+            padding:7px 12px;border-radius:999px;
+            border:1px solid rgba(212,175,55,.25);
+            background:rgba(30,50,92,.30);
+            color:rgba(255,255,255,.56);
+            font-size:.72rem;
+        }
+        .cf-badge i{color:var(--gold-bright)}
+
+        /* MODAL */
+        .modal-content{
+            border:0;border-radius:18px;overflow:hidden;
+            box-shadow:0 25px 60px rgba(0,0,0,.35);
+        }
+        .modal-header{
+            background:linear-gradient(135deg,var(--navy-900),var(--navy-800));
+            color:var(--gold-bright);
+            border-bottom:2px solid var(--gold);
+        }
+        .btn-close-custom{
+            filter:invert(84%) sepia(49%) saturate(1116%) hue-rotate(344deg) brightness(104%) contrast(93%);
+        }
+        .modal-body{background:#f8fafc;color:#334155;line-height:1.7}
+
+        /* CHATBOT */
+        #chat-container{
+            position:fixed;right:20px;bottom:20px;z-index:1060;
+            display:flex;flex-direction:column;align-items:flex-end;
+        }
+        #chat-window{
+            width:350px;max-width:92vw;
+            display:none;flex-direction:column;
+            overflow:hidden;
+            margin-bottom:14px;
+            border-radius:18px;
+            border:1px solid rgba(212,175,55,.65);
+            background:#fff;
+            box-shadow:0 18px 55px rgba(0,0,0,.26);
+            transform-origin:bottom right;
+            animation:chatPop .25s ease-out forwards;
+        }
+        @keyframes chatPop{from{opacity:0;transform:scale(.85) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+        #chat-header{
+            display:flex;align-items:center;justify-content:space-between;
+            padding:15px 16px;
+            background:linear-gradient(135deg,var(--navy-900),var(--navy-800));
+            color:var(--gold-bright);
+            font-weight:800;
+            border-bottom:1px solid rgba(212,175,55,.25);
+        }
+        #chat-messages{
+            height:315px;overflow-y:auto;padding:15px;
+            background:#f8fafc;
+            display:flex;flex-direction:column;gap:11px;
+        }
+        .msg-bubble{
+            max-width:86%;padding:10px 14px;border-radius:15px;
+            font-size:.86rem;line-height:1.45;
+            animation:fadeMsg .25s ease-out;
+        }
+        @keyframes fadeMsg{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+        .msg-bot{
+            align-self:flex-start;background:#fff;color:#334155;
+            border:1px solid #e2e8f0;border-bottom-left-radius:3px;
+        }
+        .msg-user{
+            align-self:flex-end;background:var(--navy-900);color:#fff;
+            border-bottom-right-radius:3px;
+        }
+        #chat-options{
+            padding:12px;background:#fff;border-top:1px solid #e2e8f0;
+            display:flex;flex-direction:column;gap:8px;
+        }
+        .chat-opt-btn{
+            border:1px solid rgba(212,175,55,.75);
+            background:#fff;color:var(--navy-900);
+            border-radius:999px;padding:8px 12px;
+            text-align:left;font-size:.81rem;font-weight:600;
+            transition:.2s;
+        }
+        .chat-opt-btn:hover{background:var(--gold-bright);border-color:var(--gold-bright)}
+        #chat-toggle-btn{
+            width:58px;height:58px;border-radius:50%;
+            display:grid;place-items:center;
+            border:0;
+            background:var(--gold-bright);
+            color:var(--navy-950);
+            font-size:1.55rem;
+            box-shadow:0 10px 28px rgba(0,0,0,.24);
+            transition:.25s;
+        }
+        #chat-toggle-btn:hover{transform:translateY(-4px) scale(1.04)}
+        .typing-dots span{
+            display:inline-block;width:6px;height:6px;margin:0 2px;border-radius:50%;
+            background:#94a3b8;animation:bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-dots span:nth-child(1){animation-delay:-.32s}
+        .typing-dots span:nth-child(2){animation-delay:-.16s}
+        @keyframes bounce{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
+
+        /* REVEAL */
+        .reveal{opacity:0;transform:translateY(25px);transition:.7s ease}
+        .reveal.show{opacity:1;transform:none}
+
+        @media(max-width:991px){
+            .navbar-collapse{
+                margin-top:12px;
+                padding:14px;
+                border-radius:14px;
+                background:rgba(4,16,31,.98);
+                border:1px solid rgba(255,255,255,.07);
+            }
+            .navbar-custom .nav-link{padding:.75rem .6rem}
+            .nav-contact{display:inline-block;margin-top:8px}
+            .hero-section{min-height:auto;padding:110px 0 72px}
+            .hero-grid{grid-template-columns:1fr;text-align:center;gap:20px}
+            .hero-photo-area{order:-1;min-height:335px}
+            .profile-ring{width:270px;height:270px}
+            .profile-glow{width:320px;height:320px}
+            .hello-badge{margin-left:auto;margin-right:auto}
+            .hero-desc{margin-left:auto;margin-right:auto}
+            .hero-actions,.hero-social{justify-content:center}
+            .dot-grid,.profile-note{display:none}
+            .about-grid{grid-template-columns:1fr}
+            .skill-grid{grid-template-columns:repeat(2,1fr)}
+            .contact-grid{grid-template-columns:1fr}
+        }
+
+        @media(max-width:600px){
+            .container-custom{width:min(100% - 28px,1180px)}
+            .hero-section{padding:96px 0 62px}
+            .hero-photo-area{min-height:280px}
+            .profile-ring{width:225px;height:225px;padding:6px}
+            .profile-glow{width:265px;height:265px}
+            .hero-title{font-size:2.35rem;letter-spacing:-1px}
+            .hero-role{font-size:.95rem}
+            .hero-desc{font-size:.83rem}
+            .hero-actions{display:grid;grid-template-columns:1fr 1fr;width:100%}
+            .btn-gold,.btn-ghost{font-size:.79rem;padding:0 12px}
+            .section{padding:66px 0}
+            .skill-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+            .skill-card{min-height:270px;padding:20px 15px}
+            .skill-icon{width:50px;height:50px;font-size:1.35rem}
+            .skill-card h3{font-size:.88rem}
+            .skill-card p{font-size:.72rem}
+            .about-tags{grid-template-columns:1fr}
+            .contact-box{grid-template-columns:1fr}
+            .contact-item{border-right:0}
+            .footer-inner{flex-direction:column;text-align:center}
+            .footer-links{justify-content:center}
+            #chat-window{width:min(350px,calc(100vw - 28px))}
+            #chat-container{right:14px;bottom:14px}
+        }
+
+        @media(max-width:390px){
+            .skill-grid{grid-template-columns:1fr}
+            .hero-actions{grid-template-columns:1fr}
+        }
     </style>
 </head>
+
 <body id="page-top">
 
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand text-gold fs-4 d-flex align-items-center" href="#page-top">
-                <img src="LOGO_WEB.png" alt="Logo EghaApp" width="35" height="35" class="me-2" style="object-fit: contain;">
-                EghaApp Studio
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#beranda">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#karya">Keahlian</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="mainNav">
+    <div class="container-custom">
+        <a class="navbar-brand" href="#beranda">
+            <img src="LOGO_WEB.png" alt="Logo EghaApp" class="brand-logo">
+            <span><strong>EghaApp</strong> Studio</span>
+        </a>
 
-    <section id="beranda" class="hero-section bg-glow-container">
-        <div class="container position-relative z-3">
-            <img src="PAS PHOTO 2.jpg" alt="Foto Anda" class="hero-img" onerror="this.src='https://dummyimage.com/200x200/14213D/D4AF37.png&text=Foto+Anda'">
-            <h1 class="fw-bold text-uppercase mt-3 letter-spacing-1">HELGA RIZKA PUTRA PRAYOGA</h1>
-            <hr class="w-25 mx-auto opacity-100 mt-4 mb-4" style="border: 2px solid var(--gold);">
-            <p class="lead fw-light mb-0 text-light">
-                Software Engineer <span class="text-gold mx-1">|</span> 
-                Full Stack Dev <span class="text-gold mx-1">|</span> 
-                3D & Embroidery <span class="text-gold mx-1">|</span> 
-                AI-Assisted Dev
-            </p>
-        </div>
-    </section>
-
-    <section id="karya" class="py-5 bg-pattern">
-        <div class="container py-5">
-            <h2 class="text-center text-uppercase fw-bold mb-0" style="color: var(--navy) !important;">Keahlian & Karya</h2>
-            <hr class="w-25 mx-auto opacity-100 mb-5 mt-3" style="border: 2px solid var(--gold);">
-
-            <div class="row g-4 justify-content-center">
-                
-                <div class="col-md-6">
-                    <div class="card portfolio-card h-100 text-center p-5 d-flex flex-column align-items-center" data-bs-toggle="modal" data-bs-target="#modalSE">
-                        <i class="bi bi-cpu watermark-icon"></i>
-                        <i class="bi bi-cpu portfolio-icon mb-3"></i>
-                        <h4 class="fw-bold" style="color: var(--navy);">Software Engineering</h4>
-                        <div class="mt-auto pt-4">
-                            <span class="click-hint">Klik untuk detail <i class="bi bi-arrow-right-circle-fill ms-1"></i></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card portfolio-card h-100 text-center p-5 d-flex flex-column align-items-center" data-bs-toggle="modal" data-bs-target="#modalFS">
-                        <i class="bi bi-layers watermark-icon"></i>
-                        <i class="bi bi-layers portfolio-icon mb-3"></i>
-                        <h4 class="fw-bold" style="color: var(--navy);">Full Stack Development</h4>
-                        <div class="mt-auto pt-4">
-                            <span class="click-hint">Klik untuk detail <i class="bi bi-arrow-right-circle-fill ms-1"></i></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card portfolio-card h-100 text-center p-5 d-flex flex-column align-items-center" data-bs-toggle="modal" data-bs-target="#modalDG">
-                        <i class="bi bi-vector-pen watermark-icon"></i>
-                        <i class="bi bi-vector-pen portfolio-icon mb-3"></i>
-                        <h4 class="fw-bold" style="color: var(--navy);">Desain 3D & Bordir</h4>
-                        <div class="mt-auto pt-4">
-                            <span class="click-hint">Klik untuk detail <i class="bi bi-arrow-right-circle-fill ms-1"></i></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card portfolio-card h-100 text-center p-5 d-flex flex-column align-items-center" data-bs-toggle="modal" data-bs-target="#modalAI">
-                        <i class="bi bi-robot watermark-icon"></i>
-                        <i class="bi bi-robot portfolio-icon mb-3"></i>
-                        <h4 class="fw-bold" style="color: var(--navy);">AI-Assisted Development</h4>
-                        <div class="mt-auto pt-4">
-                            <span class="click-hint">Klik untuk detail <i class="bi bi-arrow-right-circle-fill ms-1"></i></span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="kontak" class="pt-5 pb-4 bg-glow-container">
-        <div class="container text-center pt-5 position-relative z-3">
-            <h2 class="text-uppercase fw-bold mb-4 text-gold">Mari Berkolaborasi</h2>
-            <p class="lead mb-5 text-light">Tertarik dengan keahlian saya? Hubungi atau temukan saya di platform berikut.</p>
-            
-            <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 mt-4 mb-5">
-                
-                <a href="mailto:visual.ymj@gmail.com" class="btn btn-outline-gold rounded-pill px-4 py-2">
-                    <i class="bi bi-envelope-fill me-2"></i> Email
-                </a>
-
-                <a href="https://wa.me/62895422726505" target="_blank" class="btn btn-outline-gold rounded-pill px-4 py-2">
-                    <i class="bi bi-whatsapp me-2"></i> WhatsApp
-                </a>
-                
-                <a href="https://github.com/eghajoe" target="_blank" class="btn btn-outline-gold rounded-pill px-4 py-2">
-                    <i class="bi bi-github me-2"></i> GitHub
-                </a>
-                <a href="https://magnific.ai/user/visualymj" target="_blank" class="btn btn-outline-gold rounded-pill px-4 py-2">
-                    <i class="bi bi-images me-2"></i> Magnific (Freepik)
-                </a>
-                <a href="https://instagram.com/moes_prayoga" target="_blank" class="btn btn-outline-gold rounded-pill px-4 py-2">
-                    <i class="bi bi-instagram me-2"></i> Instagram
-                </a>
-                <a href="https://facebook.com/zidnaathiya.prayoga" target="_blank" class="btn btn-outline-gold rounded-pill px-4 py-2">
-                    <i class="bi bi-facebook me-2"></i> Facebook
-                </a>
-                <a href="https://youtube.com/@egha_designbordir" target="_blank" class="btn btn-outline-gold rounded-pill px-4 py-2">
-                    <i class="bi bi-youtube me-2"></i> YouTube
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-4 text-center" style="background-color: #080d1a; border-top: 1px solid rgba(212, 175, 55, 0.2);">
-        <div class="container">
-            <p class="mb-2" style="color: #a0aec0; font-size: 0.95rem;">
-                &copy; 2026 EghaApp Studio All Rights Reserved.
-            </p>
-            
-            <div class="d-flex justify-content-center gap-3 mb-3" style="font-size: 0.9rem;">
-                <a href="#" class="footer-link">Privacy Policy</a>
-                <span style="color: var(--gold);">|</span>
-                <a href="#" class="footer-link">Terms of Service</a>
-            </div>
-            
-            <div class="d-inline-flex align-items-center px-3 py-1 rounded-pill" style="background-color: rgba(30, 50, 92, 0.4); border: 1px solid rgba(212, 175, 55, 0.3);">
-                <i class="bi bi-shield-lock-fill me-2" style="color: var(--gold); font-size: 1.1rem;"></i>
-                <span style="color: #a0aec0; font-size: 0.85rem; letter-spacing: 0.5px;">Secured & Proxied by Cloudflare</span>
-            </div>
-        </div>
-    </footer>
-
-    <div id="chat-container">
-        <div id="chat-window">
-            <div id="chat-header">
-                <span><i class="bi bi-robot me-2"></i> Asisten EghaApp</span>
-                <i class="bi bi-x-lg" style="cursor:pointer;" onclick="toggleChat()" title="Tutup"></i>
-            </div>
-            
-            <div id="chat-messages">
-                <div class="msg-bubble msg-bot">
-                    Halo! 👋 Saya adalah asisten virtual Helga. Ada yang ingin Anda ketahui tentang keahlian atau layanan kami?
-                </div>
-            </div>
-            
-            <div id="chat-options">
-                <button class="chat-opt-btn" onclick="userSelectOption('siapa')">🤔 Siapa Helga itu?</button>
-                <button class="chat-opt-btn" onclick="userSelectOption('jasa')">💼 Layanan apa yang ditawarkan?</button>
-                <button class="chat-opt-btn" onclick="userSelectOption('ai')">🤖 Bagaimana konsep AI-Assisted Dev?</button>
-                <button class="chat-opt-btn" onclick="userSelectOption('kontak')">📞 Bagaimana cara order / kontak?</button>
-            </div>
-        </div>
-
-        <button id="chat-toggle-btn" onclick="toggleChat()">
-            <i class="bi bi-chat-dots-fill"></i>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Buka menu">
+            <span class="navbar-toggler-icon"></span>
         </button>
-    </div>
 
-    <div class="modal fade" id="modalSE" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-bold"><i class="bi bi-cpu me-2"></i> Software Engineering</h5>
-                    <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link active" href="#beranda">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" href="#tentang">Tentang Saya</a></li>
+                <li class="nav-item"><a class="nav-link" href="#karya">Keahlian</a></li>
+                <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                <li class="nav-item">
+                    <a class="nav-link nav-contact" href="https://wa.me/62895422726505" target="_blank">
+                        <i class="bi bi-chat-dots-fill me-1"></i> Hubungi Saya
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="beranda" class="hero-section">
+    <div class="container-custom hero-grid">
+
+        <div class="hero-content">
+            <div class="hello-badge">
+                <i class="bi bi-hand-index-thumb"></i>
+                Halo, saya Helga 👋
+            </div>
+
+            <h1 class="hero-title">
+                HELGA RIZKA
+                <span class="gold">PUTRA PRAYOGA</span>
+            </h1>
+
+            <div class="hero-role">
+                Software Engineer <span class="text-warning">|</span> Full Stack Dev
+                <br>
+                3D & Embroidery <span class="text-warning">|</span> AI-Assisted Dev
+            </div>
+
+            <p class="hero-desc">
+                Saya memadukan pengembangan perangkat lunak, teknologi web, desain 3D dan bordir digital
+                untuk membangun solusi yang fungsional, efisien dan relevan dengan kebutuhan nyata.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#karya" class="btn-gold">
+                    <i class="bi bi-grid-1x2-fill"></i>
+                    Lihat Keahlian
+                </a>
+                <a href="#kontak" class="btn-ghost">
+                    <i class="bi bi-envelope"></i>
+                    Hubungi Saya
+                </a>
+            </div>
+
+            <div class="social-label">Temukan saya di</div>
+
+            <div class="hero-social">
+                <a class="social-circle" href="https://instagram.com/moes_prayoga" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a class="social-circle" href="https://github.com/eghajoe" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                <a class="social-circle" href="https://facebook.com/zidnaathiya.prayoga" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a class="social-circle" href="https://youtube.com/@egha_designbordir" target="_blank" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                <a class="social-circle" href="https://wa.me/62895422726505" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="hero-photo-area">
+            <div class="profile-glow"></div>
+
+            <div class="profile-ring">
+                <img src="PAS PHOTO 2.jpg"
+                     alt="Helga Rizka Putra Prayoga"
+                     class="hero-img"
+                     onerror="this.src='https://dummyimage.com/400x400/14213D/D4AF37.png&text=PAS+PHOTO+2.jpg'">
+            </div>
+
+            <div class="dot-grid"></div>
+
+            <div class="profile-note">
+                Software • Design • AI
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="tentang" class="section about-section">
+    <div class="container-custom about-grid">
+
+        <div class="about-visual reveal">
+            <img src="PAS PHOTO 2.jpg"
+                 alt="Foto Helga Rizka Putra Prayoga"
+                 onerror="this.src='https://dummyimage.com/500x500/14213D/D4AF37.png&text=PAS+PHOTO+2.jpg'">
+        </div>
+
+        <div class="about-copy reveal">
+            <div class="section-kicker">Tentang Saya</div>
+            <h2 class="section-title">Teknologi dan kreativitas dalam satu proses.</h2>
+            <div class="title-line"></div>
+
+            <p>
+                Saya memadukan kemampuan Software Engineering dengan pengalaman pada desain 3D dan bordir digital.
+                Fokus saya adalah membangun solusi yang membantu proses kerja menjadi lebih terstruktur, cepat dan efisien.
+            </p>
+
+            <p>
+                Dalam pengembangan, saya juga memanfaatkan AI sebagai alat bantu analitis untuk merancang logika,
+                mempercepat problem-solving dan menyempurnakan implementasi tanpa mengabaikan pemahaman terhadap kode
+                dan arsitektur sistem.
+            </p>
+
+            <div class="about-tags">
+                <div class="about-tag">
+                    <i class="bi bi-cpu"></i>
+                    <div>
+                        <strong>Software Engineering</strong>
+                        <span>Standalone app & otomasi sistem</span>
+                    </div>
                 </div>
-                <div class="modal-body p-4">
-                    <p class="mb-0">
-                        Pengembangan perangkat lunak <i>standalone</i>, seperti pembuatan aplikasi <b>konverter file bordir biner ke format Excel</b>. Fokus pada optimasi algoritma, pemrosesan data tingkat rendah (parsing biner), dan otomasi alur kerja sistem industri.
-                    </p>
+
+                <div class="about-tag">
+                    <i class="bi bi-layers"></i>
+                    <div>
+                        <strong>Full Stack Development</strong>
+                        <span>Front-end, back-end & integrasi data</span>
+                    </div>
+                </div>
+
+                <div class="about-tag">
+                    <i class="bi bi-vector-pen"></i>
+                    <div>
+                        <strong>3D & Bordir</strong>
+                        <span>SketchUp, Wilcom & desain produksi</span>
+                    </div>
+                </div>
+
+                <div class="about-tag">
+                    <i class="bi bi-robot"></i>
+                    <div>
+                        <strong>AI-Assisted Dev</strong>
+                        <span>Analisis, debugging & optimasi workflow</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="modal fade" id="modalFS" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-bold"><i class="bi bi-layers me-2"></i> Full Stack Development</h5>
-                    <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <p class="mb-0">
-                        Perancangan arsitektur web menyeluruh (<i>front-end & back-end</i>). Mencakup pembuatan <b>Web App Manajemen Aset</b> yang cerdas untuk integrasi database distributor garmen, menjembatani antarmuka pengguna dengan sinkronisasi data <i>spreadsheet</i> secara real-time.
-                    </p>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="karya" class="section skills-section">
+    <div class="container-custom">
+
+        <div class="section-kicker">Keahlian & Karya</div>
+        <h2 class="section-title">Apa yang bisa saya bantu</h2>
+        <div class="title-line"></div>
+
+        <div class="skill-grid">
+
+            <div class="skill-card reveal" data-bs-toggle="modal" data-bs-target="#modalSE">
+                <i class="bi bi-cpu watermark-icon"></i>
+                <div class="skill-icon"><i class="bi bi-cpu"></i></div>
+                <h3>Software Engineering</h3>
+                <p>Pengembangan software khusus, pemrosesan data, otomasi workflow dan solusi aplikasi standalone.</p>
+                <div class="skill-link">Klik untuk detail <i class="bi bi-arrow-right"></i></div>
+            </div>
+
+            <div class="skill-card reveal" data-bs-toggle="modal" data-bs-target="#modalFS">
+                <i class="bi bi-layers watermark-icon"></i>
+                <div class="skill-icon"><i class="bi bi-layers"></i></div>
+                <h3>Full Stack Development</h3>
+                <p>Perancangan front-end, back-end, integrasi database dan aplikasi web untuk kebutuhan operasional.</p>
+                <div class="skill-link">Klik untuk detail <i class="bi bi-arrow-right"></i></div>
+            </div>
+
+            <div class="skill-card reveal" data-bs-toggle="modal" data-bs-target="#modalDG">
+                <i class="bi bi-vector-pen watermark-icon"></i>
+                <div class="skill-icon"><i class="bi bi-vector-pen"></i></div>
+                <h3>Desain 3D & Bordir</h3>
+                <p>Pemodelan 3D dengan SketchUp serta desain matriks bordir digital menggunakan Wilcom.</p>
+                <div class="skill-link">Klik untuk detail <i class="bi bi-arrow-right"></i></div>
+            </div>
+
+            <div class="skill-card reveal" data-bs-toggle="modal" data-bs-target="#modalAI">
+                <i class="bi bi-robot watermark-icon"></i>
+                <div class="skill-icon"><i class="bi bi-robot"></i></div>
+                <h3>AI-Assisted Development</h3>
+                <p>Pemanfaatan AI untuk analisis sistem, penyusunan logika, debugging dan percepatan pengembangan.</p>
+                <div class="skill-link">Klik untuk detail <i class="bi bi-arrow-right"></i></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="kontak" class="contact-section">
+    <div class="container-custom">
+
+        <div class="contact-grid">
+            <div class="reveal">
+                <div class="section-kicker" style="color:var(--gold-bright)">Mari Berkolaborasi</div>
+                <h2 class="contact-title">
+                    Tertarik dengan keahlian saya?
+                    <span>Mari kita diskusikan.</span>
+                </h2>
+
+                <p class="contact-desc">
+                    Hubungi saya melalui WhatsApp atau Email, atau temukan saya di platform yang sudah saya gunakan.
+                </p>
+
+                <div class="contact-actions">
+                    <a href="https://wa.me/62895422726505" target="_blank" class="btn-gold">
+                        <i class="bi bi-whatsapp"></i>
+                        Chat WhatsApp
+                    </a>
+                    <a href="mailto:visual.ymj@gmail.com" class="btn-ghost">
+                        <i class="bi bi-envelope"></i>
+                        Kirim Email
+                    </a>
                 </div>
             </div>
+
+            <div class="contact-box reveal">
+
+                <a href="mailto:visual.ymj@gmail.com" class="contact-item">
+                    <div class="contact-icon"><i class="bi bi-envelope-fill"></i></div>
+                    <div>
+                        <strong>Email</strong>
+                        <span>visual.ymj@gmail.com</span>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/62895422726505" target="_blank" class="contact-item">
+                    <div class="contact-icon"><i class="bi bi-whatsapp"></i></div>
+                    <div>
+                        <strong>WhatsApp</strong>
+                        <span>Hubungi langsung via WhatsApp</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/eghajoe" target="_blank" class="contact-item">
+                    <div class="contact-icon"><i class="bi bi-github"></i></div>
+                    <div>
+                        <strong>GitHub</strong>
+                        <span>github.com/eghajoe</span>
+                    </div>
+                </a>
+
+                <a href="https://magnific.ai/user/visualymj" target="_blank" class="contact-item">
+                    <div class="contact-icon"><i class="bi bi-images"></i></div>
+                    <div>
+                        <strong>Magnific (Freepik)</strong>
+                        <span>visualymj</span>
+                    </div>
+                </a>
+
+                <a href="https://instagram.com/moes_prayoga" target="_blank" class="contact-item">
+                    <div class="contact-icon"><i class="bi bi-instagram"></i></div>
+                    <div>
+                        <strong>Instagram</strong>
+                        <span>@moes_prayoga</span>
+                    </div>
+                </a>
+
+                <a href="https://facebook.com/zidnaathiya.prayoga" target="_blank" class="contact-item">
+                    <div class="contact-icon"><i class="bi bi-facebook"></i></div>
+                    <div>
+                        <strong>Facebook</strong>
+                        <span>zidnaathiya.prayoga</span>
+                    </div>
+                </a>
+
+                <a href="https://youtube.com/@egha_designbordir" target="_blank" class="contact-item">
+                    <div class="contact-icon"><i class="bi bi-youtube"></i></div>
+                    <div>
+                        <strong>YouTube</strong>
+                        <span>@egha_designbordir</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-inner">
+                <div>
+                    &copy; <span id="year"></span>
+                    <strong>EghaApp Studio.</strong>
+                    All Rights Reserved.
+                    <div class="cf-badge">
+                        <i class="bi bi-shield-lock-fill"></i>
+                        Secured & Proxied by Cloudflare
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</section>
+
+<!-- CHATBOT -->
+<div id="chat-container">
+    <div id="chat-window">
+        <div id="chat-header">
+            <span><i class="bi bi-robot me-2"></i> Asisten EghaApp</span>
+            <i class="bi bi-x-lg" style="cursor:pointer" onclick="toggleChat()" title="Tutup"></i>
+        </div>
+
+        <div id="chat-messages">
+            <div class="msg-bubble msg-bot">
+                Halo! 👋 Saya adalah asisten virtual Helga. Ada yang ingin Anda ketahui tentang keahlian atau layanan kami?
+            </div>
+        </div>
+
+        <div id="chat-options">
+            <button class="chat-opt-btn" onclick="userSelectOption('siapa')">🤔 Siapa Helga itu?</button>
+            <button class="chat-opt-btn" onclick="userSelectOption('jasa')">💼 Layanan apa yang ditawarkan?</button>
+            <button class="chat-opt-btn" onclick="userSelectOption('ai')">🤖 Bagaimana konsep AI-Assisted Dev?</button>
+            <button class="chat-opt-btn" onclick="userSelectOption('kontak')">📞 Bagaimana cara order / kontak?</button>
         </div>
     </div>
 
-    <div class="modal fade" id="modalDG" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-bold"><i class="bi bi-vector-pen me-2"></i> Desain 3D & Bordir</h5>
-                    <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <p class="mb-3">
-                        <b>Pemodelan 3D (SketchUp):</b><br> 
-                        Mampu memvisualisasikan ide dan konsep tata ruang secara akurat melalui pemodelan 3D. Siap menerjemahkan gagasan mentah menjadi bentuk arsitektural maupun objek presisi yang nyata.
-                    </p>
-                    <p class="mb-0">
-                        <b>Desain Bordir Digital (Wilcom):</b><br> 
-                        Pembuatan desain matriks bordir digital (<i>punching</i>) berpresisi tinggi. Pemahaman praktis desain ini melengkapi keahlian teknis saya pada struktur data mesin bordir, sehingga desain yang diproduksi terjamin efisien dan optimal.
-                    </p>
-                </div>
+    <button id="chat-toggle-btn" onclick="toggleChat()" aria-label="Buka chatbot">
+        <i class="bi bi-chat-dots-fill"></i>
+    </button>
+</div>
+
+<!-- MODAL SOFTWARE ENGINEERING -->
+<div class="modal fade" id="modalSE" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold"><i class="bi bi-cpu me-2"></i> Software Engineering</h5>
+                <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <p class="mb-0">
+                    Pengembangan perangkat lunak <i>standalone</i>, seperti pembuatan aplikasi
+                    <b>konverter file bordir biner ke format Excel</b>. Fokus pada optimasi algoritma,
+                    pemrosesan data tingkat rendah (parsing biner), dan otomasi alur kerja sistem industri.
+                </p>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="modal fade" id="modalAI" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-bold"><i class="bi bi-robot me-2"></i> AI-Assisted Development</h5>
-                    <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <p class="mb-0">
-                        Saya mengintegrasikan Kecerdasan Buatan (AI) sebagai mitra analitis untuk merancang logika sistem, mengoptimalkan algoritma, dan mempercepat penyelesaian masalah (<i>problem-solving</i>). 
-                        <br><br>
-                        Alih-alih sekadar menyalin kode mentah, saya melakukan <b>kurasi, modifikasi, dan penyempurnaan mendalam</b> agar solusi yang dihasilkan terintegrasi sempurna dengan arsitektur perangkat lunak. Pendekatan ini secara drastis mampu memangkas waktu pengerjaan dan meminimalisir <i>bug</i>, menghasilkan siklus pengembangan yang efisien dengan kualiti yang tetap terjaga.
-                    </p>
-                </div>
+<!-- MODAL FULL STACK -->
+<div class="modal fade" id="modalFS" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold"><i class="bi bi-layers me-2"></i> Full Stack Development</h5>
+                <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <p class="mb-0">
+                    Perancangan arsitektur web menyeluruh (<i>front-end & back-end</i>). Mencakup pembuatan
+                    <b>Web App Manajemen Aset</b> yang cerdas untuk integrasi database distributor garmen,
+                    menjembatani antarmuka pengguna dengan sinkronisasi data <i>spreadsheet</i> secara real-time.
+                </p>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        const navLinks = document.querySelectorAll('.nav-link');
-        const menuToggle = document.getElementById('navbarNav');
-        const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle: false});
-        navLinks.forEach((l) => {
-            l.addEventListener('click', () => {
-                if (menuToggle.classList.contains('show')) {
-                    bsCollapse.toggle();
-                }
-            });
+<!-- MODAL 3D & BORDIR -->
+<div class="modal fade" id="modalDG" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold"><i class="bi bi-vector-pen me-2"></i> Desain 3D & Bordir</h5>
+                <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <p class="mb-3">
+                    <b>Pemodelan 3D (SketchUp):</b><br>
+                    Mampu memvisualisasikan ide dan konsep tata ruang secara akurat melalui pemodelan 3D.
+                    Siap menerjemahkan gagasan mentah menjadi bentuk arsitektural maupun objek presisi yang nyata.
+                </p>
+
+                <p class="mb-0">
+                    <b>Desain Bordir Digital (Wilcom):</b><br>
+                    Pembuatan desain matriks bordir digital (<i>punching</i>) berpresisi tinggi. Pemahaman praktis
+                    desain ini melengkapi keahlian teknis pada struktur data mesin bordir, sehingga desain yang
+                    diproduksi terjamin efisien dan optimal.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL AI -->
+<div class="modal fade" id="modalAI" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold"><i class="bi bi-robot me-2"></i> AI-Assisted Development</h5>
+                <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <p class="mb-0">
+                    Saya mengintegrasikan Kecerdasan Buatan (AI) sebagai mitra analitis untuk merancang logika sistem,
+                    mengoptimalkan algoritma, dan mempercepat penyelesaian masalah (<i>problem-solving</i>).
+                    <br><br>
+                    Alih-alih sekadar menyalin kode mentah, saya melakukan <b>kurasi, modifikasi, dan penyempurnaan mendalam</b>
+                    agar solusi yang dihasilkan terintegrasi dengan arsitektur perangkat lunak. Pendekatan ini membantu
+                    memangkas waktu pengerjaan, meminimalkan bug dan menjaga kualitas pengembangan.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SCRIPT -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Tahun footer otomatis
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Navbar shadow saat scroll
+    const mainNav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+        mainNav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Tutup menu mobile saat link dipilih
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navbarNav = document.getElementById('navbarNav');
+    const bsCollapse = new bootstrap.Collapse(navbarNav, {toggle:false});
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navbarNav.classList.contains('show')) {
+                bsCollapse.hide();
+            }
+        });
+    });
+
+    // Active nav berdasarkan section
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+        let current = 'beranda';
+
+        sections.forEach(section => {
+            if (window.scrollY >= section.offsetTop - 140) {
+                current = section.id;
+            }
         });
 
-        // ==========================================
-        // LOGIKA ROBOT CHATBOT MURNI JS
-        // ==========================================
-        const chatWindow = document.getElementById('chat-window');
-        const chatMessages = document.getElementById('chat-messages');
-        const chatOptions = document.getElementById('chat-options');
-        const chatBtnIcon = document.querySelector('#chat-toggle-btn i');
-
-        // Fungsi Buka/Tutup Chat
-        function toggleChat() {
-            if (chatWindow.style.display === "none" || chatWindow.style.display === "") {
-                chatWindow.style.display = "flex";
-                chatBtnIcon.classList.remove('bi-chat-dots-fill');
-                chatBtnIcon.classList.add('bi-x-lg');
-            } else {
-                chatWindow.style.display = "none";
-                chatBtnIcon.classList.remove('bi-x-lg');
-                chatBtnIcon.classList.add('bi-chat-dots-fill');
+        document.querySelectorAll('.navbar-custom .nav-link[href^="#"]').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
             }
-        }
+        });
+    });
 
-        // Database Jawaban Robot (Berdasarkan Kunci)
-        const botAnswers = {
-            'siapa': "Helga adalah seorang profesional yang memadukan keahlian logika (Software Engineer) dengan kreativitas visual (Desainer 3D & Bordir).",
-            'jasa': "Kami menerima pembuatan Web App, Software khusus (seperti pengolah data/konverter), desain arsitektur 3D, dan desain matriks digital (Punching) untuk mesin bordir.",
-            'ai': "Konsep ini berarti Helga bekerja berdampingan dengan AI tingkat lanjut. AI digunakan untuk mempercepat penulisan kode awal dan mencari solusi (debugging), sehingga proyek Anda selesai jauh lebih cepat dan rapi!",
-            'kontak': "Sangat mudah! Anda bisa scroll ke bagian bawah halaman ini, lalu klik tombol WhatsApp atau Email. Helga akan dengan senang hati membalas pesan Anda."
+    // Reveal animation
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('show');
+        });
+    }, {threshold:.12});
+
+    revealItems.forEach(item => observer.observe(item));
+
+    // CHATBOT
+    const chatWindow = document.getElementById('chat-window');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatOptions = document.getElementById('chat-options');
+    const chatBtnIcon = document.querySelector('#chat-toggle-btn i');
+
+    function toggleChat() {
+        const isOpen = chatWindow.style.display === 'flex';
+
+        chatWindow.style.display = isOpen ? 'none' : 'flex';
+
+        chatBtnIcon.classList.toggle('bi-chat-dots-fill', isOpen);
+        chatBtnIcon.classList.toggle('bi-x-lg', !isOpen);
+    }
+
+    const botAnswers = {
+        siapa: "Helga adalah seorang profesional yang memadukan keahlian logika sebagai Software Engineer dengan kreativitas visual pada desain 3D dan bordir digital.",
+        jasa: "Layanan yang ditawarkan mencakup pembuatan Web App, software khusus seperti pengolah data atau konverter, desain arsitektur 3D, serta desain matriks digital (punching) untuk mesin bordir.",
+        ai: "AI digunakan sebagai alat bantu analitis untuk mempercepat penyusunan logika awal, debugging dan problem-solving. Hasilnya tetap dikurasi, dimodifikasi dan disesuaikan dengan arsitektur aplikasi.",
+        kontak: "Anda dapat menghubungi Helga melalui tombol WhatsApp atau Email pada bagian Kontak di halaman ini."
+    };
+
+    function userSelectOption(key) {
+        chatOptions.style.display = 'none';
+
+        const questionMap = {
+            siapa: "Siapa Helga itu?",
+            jasa: "Layanan apa yang ditawarkan?",
+            ai: "Bagaimana konsep AI-Assisted Dev?",
+            kontak: "Bagaimana cara order / kontak?"
         };
 
-        // Fungsi saat pelawat mengklik tombol pertanyaan
-        function userSelectOption(key) {
-            // Sembunyikan tombol opsi sementara
-            chatOptions.style.display = 'none';
+        appendMessage(questionMap[key], 'user');
+        const typingId = showTypingIndicator();
 
-            // Dapatkan teks pertanyaan berdasarkan tombol yang diklik
-            let questionText = "";
-            if(key === 'siapa') questionText = "Siapa Helga itu?";
-            if(key === 'jasa') questionText = "Layanan apa yang ditawarkan?";
-            if(key === 'ai') questionText = "Bagaimana konsep AI-Assisted Dev?";
-            if(key === 'kontak') questionText = "Bagaimana cara order / kontak?";
+        setTimeout(() => {
+            const typing = document.getElementById(typingId);
+            if (typing) typing.remove();
 
-            // Tambahkan gelembung pesan pelawat (User)
-            appendMessage(questionText, 'user');
+            appendMessage(botAnswers[key], 'bot');
+            chatOptions.style.display = 'flex';
+        }, 1000);
+    }
 
-            // Tampilkan animasi Robot sedang mengetik
-            const typingId = showTypingIndicator();
+    function appendMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('msg-bubble', sender === 'user' ? 'msg-user' : 'msg-bot');
 
-            // Tunggu 1.5 detik (simulasi robot berfikir/mengetik)
-            setTimeout(() => {
-                // Hapus indikator mengetik
-                document.getElementById(typingId).remove();
-                
-                // Tambahkan jawaban robot
-                appendMessage(botAnswers[key], 'bot');
-
-                // Munculkan kembali tombol opsi
-                chatOptions.style.display = 'flex';
-            }, 1500);
+        if (sender === 'bot') {
+            msgDiv.innerHTML = '<i class="bi bi-robot text-secondary me-1"></i> ' + text;
+        } else {
+            msgDiv.textContent = text;
         }
 
-        // Fungsi untuk menambahkan gelembung chat ke layar
-        function appendMessage(text, sender) {
-            const msgDiv = document.createElement('div');
-            msgDiv.classList.add('msg-bubble');
-            
-            if (sender === 'user') {
-                msgDiv.classList.add('msg-user');
-            } else {
-                msgDiv.classList.add('msg-bot');
-                text = `<i class="bi bi-robot text-secondary me-1"></i> ` + text;
-            }
-            
-            msgDiv.innerHTML = text;
-            chatMessages.appendChild(msgDiv);
-            
-            // Otomatis scroll ke pesan paling bawah
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 
-        // Fungsi animasi titik-titik (Mengetik)
-        function showTypingIndicator() {
-            const typingDiv = document.createElement('div');
-            const uniqueId = 'typing-' + Date.now();
-            typingDiv.id = uniqueId;
-            typingDiv.classList.add('msg-bubble', 'msg-bot', 'typing-dots');
-            typingDiv.innerHTML = `<span></span><span></span><span></span>`;
-            chatMessages.appendChild(typingDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            return uniqueId;
-        }
-    </script>
+    function showTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        const uniqueId = 'typing-' + Date.now();
+
+        typingDiv.id = uniqueId;
+        typingDiv.classList.add('msg-bubble','msg-bot','typing-dots');
+        typingDiv.innerHTML = '<span></span><span></span><span></span>';
+
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        return uniqueId;
+    }
+</script>
+
 </body>
 </html>

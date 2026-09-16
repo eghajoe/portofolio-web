@@ -437,6 +437,186 @@
         }
         .skill-card:hover .watermark-icon{opacity:.055;transform:rotate(0) scale(1.06)}
 
+
+        /* PRICING / PROMO */
+        .pricing-section{
+            position:relative;
+            overflow:hidden;
+            background:
+                radial-gradient(circle at 85% 18%,rgba(212,175,55,.12),transparent 28%),
+                linear-gradient(180deg,#f7f9fc 0%,#ffffff 100%);
+        }
+        .pricing-section::before{
+            content:"";
+            position:absolute;
+            width:360px;height:360px;border-radius:50%;
+            left:-150px;bottom:-190px;
+            background:rgba(20,33,61,.045);
+        }
+        .pricing-head{
+            max-width:760px;
+            margin-bottom:34px;
+            position:relative;
+            z-index:2;
+        }
+        .pricing-head p{color:var(--muted);margin:0;max-width:670px}
+        .pricing-shell{
+            position:relative;
+            z-index:2;
+            display:grid;
+            grid-template-columns:.88fr 1.12fr;
+            gap:24px;
+            align-items:stretch;
+        }
+        .pricing-intro,.pricing-card{
+            border:1px solid var(--border);
+            border-radius:24px;
+            box-shadow:var(--shadow);
+        }
+        .pricing-intro{
+            padding:34px;
+            color:#fff;
+            background:
+                radial-gradient(circle at 90% 12%,rgba(212,175,55,.15),transparent 30%),
+                linear-gradient(145deg,#07182f,#10284a);
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            min-height:100%;
+        }
+        .pricing-intro-badge{
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            width:max-content;
+            max-width:100%;
+            padding:8px 13px;
+            border-radius:999px;
+            background:rgba(212,175,55,.12);
+            border:1px solid rgba(212,175,55,.35);
+            color:#f7d66c;
+            font-size:.76rem;
+            font-weight:800;
+            letter-spacing:.05em;
+        }
+        .pricing-intro h3{
+            margin:22px 0 12px;
+            font-family:'Manrope',sans-serif;
+            font-size:clamp(1.8rem,3vw,2.4rem);
+            font-weight:800;
+            line-height:1.13;
+        }
+        .pricing-intro p{color:rgba(255,255,255,.68);font-size:.92rem;margin:0}
+        .pricing-mini-note{
+            margin-top:24px;
+            padding-top:20px;
+            border-top:1px solid rgba(255,255,255,.10);
+            color:rgba(255,255,255,.72);
+            font-size:.78rem;
+        }
+        .pricing-card{
+            position:relative;
+            padding:36px;
+            background:#fff;
+            overflow:hidden;
+        }
+        .pricing-card::before{
+            content:"";
+            position:absolute;
+            left:0;top:0;
+            width:100%;height:4px;
+            background:linear-gradient(90deg,var(--gold),var(--gold-bright));
+        }
+        .pricing-label{
+            display:inline-flex;
+            align-items:center;
+            gap:7px;
+            padding:7px 12px;
+            border-radius:999px;
+            color:var(--navy-900);
+            background:var(--gold-soft);
+            border:1px solid rgba(212,175,55,.36);
+            font-size:.75rem;
+            font-weight:800;
+            letter-spacing:.04em;
+        }
+        .pricing-card h3{
+            margin:18px 0 4px;
+            color:var(--navy-900);
+            font-family:'Manrope',sans-serif;
+            font-size:1.45rem;
+            font-weight:800;
+        }
+        .pricing-subtitle{color:var(--muted);font-size:.84rem;margin-bottom:22px}
+        .price-old{color:#94a3b8;font-size:1rem;text-decoration:line-through;margin-bottom:1px}
+        .price-row{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+        .price-main{
+            color:var(--navy-900);
+            font-family:'Manrope',sans-serif;
+            font-size:clamp(2.35rem,5vw,3.4rem);
+            font-weight:800;
+            line-height:1;
+            letter-spacing:-1.5px;
+        }
+        .price-period{color:var(--muted);font-size:.86rem;font-weight:700;padding-bottom:5px}
+        .maintenance-badge{
+            display:flex;
+            align-items:flex-start;
+            gap:10px;
+            margin:18px 0 24px;
+            padding:14px 15px;
+            border-radius:14px;
+            background:#fff9e8;
+            border:1px solid rgba(212,175,55,.32);
+            color:#725400;
+            font-size:.84rem;
+            font-weight:700;
+        }
+        .maintenance-badge i{color:#b67f00;font-size:1rem;margin-top:1px}
+        .pricing-features{
+            display:grid;
+            grid-template-columns:repeat(2,minmax(0,1fr));
+            gap:10px 16px;
+            margin:0 0 26px;
+            padding:0;
+            list-style:none;
+        }
+        .pricing-features li{
+            display:flex;
+            align-items:flex-start;
+            gap:8px;
+            color:#334155;
+            font-size:.82rem;
+        }
+        .pricing-features i{color:#b47f00;margin-top:2px}
+        .pricing-actions{display:flex;flex-wrap:wrap;gap:11px}
+        .pricing-note{
+            margin-top:18px;
+            color:var(--muted);
+            font-size:.76rem;
+            line-height:1.55;
+        }
+        .pricing-note strong{color:var(--navy-900)}
+        .btn-email{
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            gap:9px;
+            min-height:48px;
+            padding:0 22px;
+            border-radius:10px;
+            color:var(--navy-900)!important;
+            background:#fff;
+            border:1px solid rgba(13,39,75,.18);
+            font-weight:700;
+            transition:.25s;
+        }
+        .btn-email:hover{
+            transform:translateY(-3px);
+            border-color:rgba(212,175,55,.75);
+            box-shadow:0 12px 28px rgba(7,24,47,.08);
+        }
+
         /* CONTACT */
         .contact-section{
             position:relative;
@@ -636,6 +816,7 @@
             .dot-grid,.profile-note{display:none}
             .about-grid{grid-template-columns:1fr}
             .skill-grid{grid-template-columns:repeat(2,1fr)}
+            .pricing-shell{grid-template-columns:1fr}
             .contact-grid{grid-template-columns:1fr}
         }
 
@@ -657,6 +838,10 @@
             .skill-card h3{font-size:.88rem}
             .skill-card p{font-size:.72rem}
             .about-tags{grid-template-columns:1fr}
+            .pricing-intro,.pricing-card{padding:24px 20px}
+            .pricing-features{grid-template-columns:1fr}
+            .pricing-actions{display:grid;grid-template-columns:1fr}
+            .pricing-actions .btn-gold,.pricing-actions .btn-email{width:100%}
             .contact-box{grid-template-columns:1fr}
             .contact-item{border-right:0}
             .footer-inner{flex-direction:column;text-align:center}
@@ -691,6 +876,7 @@
                 <li class="nav-item"><a class="nav-link active" href="#beranda">Beranda</a></li>
                 <li class="nav-item"><a class="nav-link" href="#tentang">Tentang Saya</a></li>
                 <li class="nav-item"><a class="nav-link" href="#karya">Keahlian</a></li>
+                <li class="nav-item"><a class="nav-link" href="#paket">Paket</a></li>
                 <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
                 <li class="nav-item">
                     <a class="nav-link nav-contact" href="https://wa.me/62895422726505" target="_blank">
@@ -874,6 +1060,120 @@
                 <h3>AI-Assisted Development</h3>
                 <p>Pemanfaatan AI untuk analisis sistem, penyusunan logika, debugging dan percepatan pengembangan.</p>
                 <div class="skill-link">Klik untuk detail <i class="bi bi-arrow-right"></i></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- PRICING / PROMO -->
+<section id="paket" class="section pricing-section">
+    <div class="container-custom">
+
+        <div class="pricing-head reveal">
+            <div class="section-kicker">Promo Layanan</div>
+            <h2 class="section-title">EghaApp ISP Billing</h2>
+            <div class="title-line"></div>
+
+            <p>
+                Solusi billing dan manajemen pelanggan untuk RT/RW Net dan penyedia layanan internet,
+                dengan portal Admin, Teknisi, Pelanggan, payment gateway, notifikasi dan dukungan operasional.
+            </p>
+        </div>
+
+        <div class="pricing-shell">
+
+            <div class="pricing-intro reveal">
+                <div>
+                    <span class="pricing-intro-badge">
+                        <i class="bi bi-stars"></i>
+                        PROMO EARLY CLIENT
+                    </span>
+
+                    <h3>
+                        Sistem siap pakai,
+                        tetap fleksibel untuk kebutuhan operasional Anda.
+                    </h3>
+
+                    <p>
+                        Cocok untuk bisnis internet yang ingin mulai dari billing modern,
+                        lalu berkembang ke pemetaan pelanggan, monitoring jaringan,
+                        integrasi teknisi dan otomasi lainnya.
+                    </p>
+                </div>
+
+                <div class="pricing-mini-note">
+                    <i class="bi bi-shield-check me-1"></i>
+                    Implementasi menyesuaikan kebutuhan, branding dan workflow customer.
+                </div>
+            </div>
+
+            <div class="pricing-card reveal">
+                <span class="pricing-label">
+                    <i class="bi bi-lightning-charge-fill"></i>
+                    ISP BILLING PRO
+                </span>
+
+                <h3>Promo Implementasi Tahunan</h3>
+
+                <div class="pricing-subtitle">
+                    Sudah termasuk support & maintenance selama 12 bulan.
+                </div>
+
+                <div class="price-old">Rp6.000.000</div>
+
+                <div class="price-row">
+                    <div class="price-main">Rp3.750.000</div>
+                    <div class="price-period">/ 1 tahun</div>
+                </div>
+
+                <div class="maintenance-badge">
+                    <i class="bi bi-tools"></i>
+                    <div>
+                        Support & Maintenance 1 Tahun Included —
+                        mencakup bantuan teknis, bug fixing, maintenance sistem,
+                        serta minor update selama masa aktif paket.
+                    </div>
+                </div>
+
+                <ul class="pricing-features">
+                    <li><i class="bi bi-check-circle-fill"></i> Dashboard Admin</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Portal Teknisi</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Portal Pelanggan</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Billing & Invoice</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Payment Gateway</li>
+                    <li><i class="bi bi-check-circle-fill"></i> WhatsApp Notification</li>
+                    <li><i class="bi bi-check-circle-fill"></i> GPS / Koordinat Pelanggan</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Digital Receipt</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Custom Branding</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Cloud Deployment</li>
+                </ul>
+
+                <div class="pricing-actions">
+                    <a
+                        href="https://wa.me/62895422726505?text=Halo%20EghaApp%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20tentang%20paket%20EghaApp%20ISP%20Billing%20Pro."
+                        target="_blank"
+                        class="btn-gold"
+                    >
+                        <i class="bi bi-whatsapp"></i>
+                        Konsultasi Gratis
+                    </a>
+
+                    <a
+                        href="mailto:visual.ymj@gmail.com?subject=Konsultasi%20EghaApp%20ISP%20Billing%20Pro&body=Halo%20EghaApp%20Studio%2C%0A%0ASaya%20ingin%20konsultasi%20mengenai%20paket%20ISP%20Billing%20Pro."
+                        class="btn-email"
+                    >
+                        <i class="bi bi-envelope"></i>
+                        Konsultasi via Email
+                    </a>
+                </div>
+
+                <p class="pricing-note">
+                    <strong>Catatan:</strong>
+                    harga promo Rp3.750.000 berlaku untuk masa layanan <strong>1 tahun (12 bulan)</strong>
+                    dan sudah termasuk support & maintenance selama periode tersebut.
+                    Untuk tahun berikutnya, perpanjangan layanan akan diinformasikan sebelum masa aktif berakhir.
+                </p>
             </div>
 
         </div>
@@ -1176,7 +1476,7 @@
 
     const botAnswers = {
         siapa: "Helga adalah seorang profesional yang memadukan keahlian logika sebagai Software Engineer dengan kreativitas visual pada desain 3D dan bordir digital.",
-        jasa: "Layanan yang ditawarkan mencakup pembuatan Web App, software khusus seperti pengolah data atau konverter, desain arsitektur 3D, serta desain matriks digital (punching) untuk mesin bordir.",
+        jasa: "Layanan yang ditawarkan mencakup pembuatan Web App, software khusus seperti pengolah data atau konverter, desain arsitektur 3D, desain matriks digital (punching) untuk mesin bordir, serta EghaApp ISP Billing dengan paket tahunan yang sudah termasuk support & maintenance.",
         ai: "AI digunakan sebagai alat bantu analitis untuk mempercepat penyusunan logika awal, debugging dan problem-solving. Hasilnya tetap dikurasi, dimodifikasi dan disesuaikan dengan arsitektur aplikasi.",
         kontak: "Anda dapat menghubungi Helga melalui tombol WhatsApp atau Email pada bagian Kontak di halaman ini."
     };

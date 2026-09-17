@@ -108,6 +108,13 @@
         .navbar-toggler-icon{
             background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(245,187,34,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
+        /* Tambahkan di bawah blok /* NAVBAR */ */
+        .navbar-custom .container-custom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: inherit;
+        }
         .nav-contact{
             border:1px solid rgba(255,255,255,.5);
             color:#fff!important;
@@ -845,6 +852,11 @@
             .contact-item{border-right:0}
             .footer-inner{flex-direction:column;text-align:center}
             .footer-links{justify-content:center}
+            .footer-inner > div:first-child {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px !important;
+            }
             #chat-window{width:min(350px,calc(100vw - 28px))}
             #chat-container{right:14px;bottom:14px}
         }
@@ -1270,16 +1282,23 @@
 
         <footer>
             <div class="footer-inner">
-                <div>
-                    &copy; <span id="year"></span>
-                    <strong>EghaApp Studio.</strong>
-                    All Rights Reserved.
-                    <div class="cf-badge">
-                        <i class="bi bi-shield-lock-fill"></i>
-                        Secured & Proxied by Cloudflare
+                <!-- Bagian Kiri: Logo & Copyright -->
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <img src="LOGO%20EA.png" alt="Logo EghaApp Studio" style="width: 48px; height: 48px; object-fit: contain;">
+                    <div>
+                        <div style="margin-bottom: 4px;">
+                            &copy; <span id="year"></span>
+                            <strong>EghaApp Studio.</strong>
+                            All Rights Reserved.
+                        </div>
+                        <div class="cf-badge" style="margin-top: 0;">
+                            <i class="bi bi-shield-lock-fill"></i>
+                            Secured & Proxied by Cloudflare
+                        </div>
                     </div>
                 </div>
 
+                <!-- Bagian Kanan: Link -->
                 <div class="footer-links">
                     <a href="#" class="footer-link">Privacy Policy</a>
                     <a href="#" class="footer-link">Terms of Service</a>

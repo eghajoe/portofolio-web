@@ -866,6 +866,7 @@
             .hero-actions{grid-template-columns:1fr}
         }
     </style>
+    <link rel="stylesheet" href="assets/pos-promo/pos-promo.css" data-egha-pos-css>
 </head>
 
 <body id="page-top">
@@ -888,6 +889,7 @@
                 <li class="nav-item"><a class="nav-link" href="#tentang">Tentang Saya</a></li>
                 <li class="nav-item"><a class="nav-link" href="#karya">Keahlian</a></li>
                 <li class="nav-item"><a class="nav-link" href="#paket">Paket</a></li>
+                <li class="nav-item"><a class="nav-link" href="#ea-pos-promo">Demo POS</a></li>
                 <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
                 <li class="nav-item">
                     <a class="nav-link nav-contact" href="https://wa.me/62895422726505" target="_blank">
@@ -1189,6 +1191,77 @@
         </div>
     </div>
 </section>
+
+<!-- EGHAAPP_POS_PROMO_START: product section, floating button, demo video and 5-photo slider -->
+<section id="ea-pos-promo" aria-labelledby="ea-pos-title">
+  <div class="ea-pos-inner">
+    <div>
+      <span class="ea-pos-kicker">✦ PRODUK DIGITAL • EghaApp STUDIO</span>
+      <h2 id="ea-pos-title" class="ea-pos-title">POS Kasir Modern <em>untuk Semua Usaha.</em></h2>
+      <p class="ea-pos-desc">Kenali sistem kasir berbasis Python Flask: transaksi, stok, member, laporan, cetak struk, dan 10 pilihan tema sesuai karakter usaha. Lihat demo visual menggunakan data simulasi.</p>
+      <div class="ea-pos-tags" aria-label="Fitur utama"><span>10 pilihan tema</span><span>Transaksi & stok</span><span>Member & poin</span><span>Laporan & struk</span></div>
+      <button class="ea-pos-cta" type="button" data-ea-pos-open="video" aria-haspopup="dialog" aria-controls="ea-pos-dialog">▶ Putar Video Demo & Galeri</button>
+      <p class="ea-pos-note">Demo visual ±39 detik · 5 gambar promo · Foto dan transaksi ilustrasi</p>
+    </div>
+    <button type="button" class="ea-pos-preview ea-pos-cta-preview" data-ea-pos-open="gallery" aria-haspopup="dialog" aria-controls="ea-pos-dialog" aria-label="Buka galeri 5 foto POS Kasir">
+      <img src="assets/pos-promo/pos-01.webp" alt="Poster promosi POS Kasir EghaApp STUDIO" loading="lazy" width="1672" height="941">
+      <span class="ea-pos-preview-badge">Lihat 5 foto ↗</span>
+    </button>
+  </div>
+</section>
+
+<!-- On the left: existing website chatbot stays on the right -->
+<button id="ea-pos-floating" class="ea-pos-float" type="button" data-ea-pos-open="video" aria-label="Buka video promosi POS Kasir EghaApp STUDIO" aria-haspopup="dialog" aria-controls="ea-pos-dialog">
+  <img src="assets/pos-promo/logo-eghaapp-studio.png" alt="" width="43" height="43" loading="lazy">
+  <span><strong>Demo POS Kasir</strong><small>Video + 5 foto ›</small></span>
+</button>
+
+<dialog id="ea-pos-dialog" aria-labelledby="ea-pos-dialog-title" aria-describedby="ea-pos-dialog-desc">
+  <div class="ea-pos-dialog-head">
+    <div class="ea-pos-dialog-brand">
+      <img src="assets/pos-promo/logo-eghaapp-studio.png" alt="Logo EghaApp STUDIO" width="44" height="44">
+      <div><strong id="ea-pos-dialog-title">EghaApp STUDIO · POS Kasir</strong><small id="ea-pos-dialog-desc">Demo video & galeri foto promosi</small></div>
+    </div>
+    <button class="ea-pos-close" type="button" aria-label="Tutup demo">×</button>
+  </div>
+  <div class="ea-pos-dialog-body">
+    <div class="ea-pos-tabs" aria-label="Pilihan media promosi">
+      <button class="ea-pos-tab" type="button" aria-pressed="true" data-ea-pos-tab="video">▶ Video Promosi</button>
+      <button class="ea-pos-tab" type="button" aria-pressed="false" data-ea-pos-tab="gallery">▣ Galeri 5 Foto</button>
+    </div>
+    <div class="ea-pos-panel" data-ea-pos-panel="video">
+      <video id="ea-pos-video" class="ea-pos-video" controls playsinline preload="none" poster="assets/pos-promo/poster.jpg" aria-label="Video demo promosi POS Kasir EghaApp STUDIO">
+        <source src="assets/pos-promo/video-eghaapp-studio-pos.mp4" type="video/mp4">
+        Browser Anda belum mendukung video MP4. <a href="assets/pos-promo/video-eghaapp-studio-pos.mp4">Buka video</a>.
+      </video>
+    </div>
+    <div class="ea-pos-panel" data-ea-pos-panel="gallery" hidden>
+      <div class="ea-pos-viewer" aria-label="Galeri 5 foto POS Kasir, gunakan tombol panah atau geser layar">
+        <img class="ea-pos-slide" src="assets/pos-promo/pos-01.webp" alt="Foto 1: Demo POS Kasir EghaApp STUDIO" width="1672" height="941" draggable="false">
+        <img class="ea-pos-slide" src="assets/pos-promo/pos-02.webp" alt="Foto 2: Sepuluh pilihan tema POS Kasir" width="1672" height="941" draggable="false" hidden>
+        <img class="ea-pos-slide" src="assets/pos-promo/pos-03.webp" alt="Foto 3: Fitur utama POS Kasir" width="1672" height="941" draggable="false" hidden>
+        <img class="ea-pos-slide" src="assets/pos-promo/pos-04.webp" alt="Foto 4: Alur transaksi dari scan barang sampai struk" width="1672" height="941" draggable="false" hidden>
+        <img class="ea-pos-slide" src="assets/pos-promo/pos-05.webp" alt="Foto 5: POS Kasir modern untuk semua usaha" width="1672" height="941" draggable="false" hidden>
+        <button class="ea-pos-arrow prev" type="button" aria-label="Foto sebelumnya">‹</button>
+        <button class="ea-pos-arrow next" type="button" aria-label="Foto berikutnya">›</button>
+      </div>
+      <div class="ea-pos-gallery-bottom">
+        <span id="ea-pos-counter" class="ea-pos-counter" aria-live="polite">1 / 5</span>
+        <div class="ea-pos-dots" role="group" aria-label="Pilih foto">
+          <button class="ea-pos-dot" type="button" aria-label="Foto 1" aria-current="true"></button>
+          <button class="ea-pos-dot" type="button" aria-label="Foto 2" aria-current="false"></button>
+          <button class="ea-pos-dot" type="button" aria-label="Foto 3" aria-current="false"></button>
+          <button class="ea-pos-dot" type="button" aria-label="Foto 4" aria-current="false"></button>
+          <button class="ea-pos-dot" type="button" aria-label="Foto 5" aria-current="false"></button>
+        </div>
+        <span class="ea-pos-counter">Klik panah · geser · ← →</span>
+      </div>
+    </div>
+    <p class="ea-pos-dialog-foot">Visual promosi dengan foto dan transaksi simulasi. Tertarik dengan aplikasi POS Kasir? <a href="#kontak" onclick="document.getElementById('ea-pos-dialog').close()">Hubungi EghaApp STUDIO</a>.</p>
+  </div>
+</dialog>
+<!-- EGHAAPP_POS_PROMO_END -->
+
 
 <!-- CONTACT -->
 <section id="kontak" class="contact-section">
@@ -1549,5 +1622,6 @@
     }
 </script>
 
+<script src="assets/pos-promo/pos-promo.js" defer data-egha-pos-js></script>
 </body>
 </html>

@@ -1,0 +1,28 @@
+/* EghaApp STUDIO: ISP melayang + tombol lokasi. Scoped: tidak mengubah POS, chatbot dan pricing. */
+#ea-isp-floating,#ea-location-floating{position:fixed;box-sizing:border-box;display:flex;align-items:center;gap:10px;border:1px solid rgba(255,211,111,.75);cursor:pointer;font-family:Inter,system-ui,sans-serif;text-align:left;box-shadow:0 11px 27px rgba(3,14,32,.32);transition:transform .2s ease,opacity .2s ease;line-height:1.25}
+#ea-isp-floating:hover,#ea-location-floating:hover{transform:translateY(-3px)}
+#ea-isp-floating:focus-visible,#ea-location-floating:focus-visible,#ea-location-dialog button:focus-visible,#ea-location-dialog a:focus-visible{outline:3px solid #74bcff;outline-offset:3px}
+#ea-isp-floating{left:18px;bottom:calc(100px + env(safe-area-inset-bottom, 0px));z-index:1056;border-radius:999px;padding:8px 16px 8px 8px;background:linear-gradient(132deg,#071a35,#15446b);color:#fff;max-width:calc(100vw - 32px)}
+#ea-isp-floating .ea-isp-floating-icon{width:43px;height:43px;flex:none;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,#ffe08c,#e6ab19);color:#0c2542;font-size:28px;font-weight:800;border:1px solid #fff8}
+#ea-isp-floating strong,#ea-location-floating strong{display:block;font-size:.86rem;font-weight:800;white-space:nowrap}
+#ea-isp-floating small,#ea-location-floating small{display:block;font-size:.70rem;opacity:.86;white-space:nowrap;margin-top:3px}
+#ea-location-floating{right:20px;bottom:calc(96px + env(safe-area-inset-bottom, 0px));z-index:1061;border-radius:999px;padding:7px 13px 7px 7px;background:linear-gradient(135deg,#ffe08c,#eab529);color:#07182f}
+#ea-location-floating .ea-location-marker{width:41px;height:41px;flex:none;display:grid;place-items:center;border-radius:50%;background:#102b4e;color:#fff;font-size:22px;border:1px solid #dfb547}
+/* Chatbot yang sedang terbuka memiliki area lebih besar; sembunyikan tombol Maps saat jendela chat terbuka. */
+#ea-location-floating.ea-location-chat-open{opacity:0;visibility:hidden;pointer-events:none}
+#ea-location-dialog{width:min(820px,calc(100vw - 20px));max-width:none;max-height:calc(100dvh - 20px);padding:0;overflow:auto;border-radius:18px;border:1px solid #ecc76d;background:#081c34;color:#f9faff;box-shadow:0 28px 95px #0009;font-family:Inter,system-ui,sans-serif}
+#ea-location-dialog *{box-sizing:border-box}
+#ea-location-dialog::backdrop{background:rgba(3,11,25,.79);backdrop-filter:blur(6px)}
+#ea-location-dialog .ea-location-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;background:#102d4e;border-bottom:1px solid #f7cd7d55}
+#ea-location-dialog .ea-location-brand{display:flex;align-items:center;gap:11px;min-width:0}
+#ea-location-dialog .ea-location-brand img{width:43px;height:43px;object-fit:contain;background:#fff;border-radius:10px}
+#ea-location-dialog .ea-location-brand strong{display:block;font-size:.97rem;color:#ffe295}
+#ea-location-dialog .ea-location-brand small{display:block;font-size:.73rem;color:#d5e1ed}
+#ea-location-dialog #ea-location-close{border:1px solid #fff5;border-radius:11px;background:#fff2;color:white;width:41px;height:41px;flex:none;cursor:pointer;font-size:27px}
+#ea-location-dialog .ea-location-body{padding:15px}
+#ea-location-dialog iframe{display:block;width:100%;height:clamp(260px,55vh,430px);border:1px solid #f9d77b66;background:#e8eef3;border-radius:13px}
+#ea-location-dialog .ea-location-body p{color:#d6e4f1;margin:13px 0;font-size:.81rem;line-height:1.55}
+#ea-location-dialog .ea-location-go{display:inline-flex;align-items:center;justify-content:center;min-height:47px;padding:10px 17px;border-radius:10px;background:linear-gradient(135deg,#ffe293,#e3ac26);color:#0a2139;font-weight:800;font-size:.86rem;text-decoration:none}
+@media(max-width:600px){#ea-isp-floating{left:12px;bottom:calc(81px + env(safe-area-inset-bottom, 0px));padding:5px 11px 5px 5px;gap:7px}#ea-isp-floating .ea-isp-floating-icon{width:37px;height:37px;font-size:24px}#ea-isp-floating strong,#ea-location-floating strong{font-size:.73rem}#ea-isp-floating small,#ea-location-floating small{font-size:.60rem}#ea-location-floating{right:12px;bottom:calc(87px + env(safe-area-inset-bottom, 0px));padding:5px 9px 5px 5px;gap:6px}#ea-location-floating .ea-location-marker{width:36px;height:36px;font-size:19px}#ea-location-dialog{width:calc(100vw - 10px);max-height:calc(100dvh - 10px);border-radius:11px}#ea-location-dialog .ea-location-head{padding:10px}#ea-location-dialog .ea-location-body{padding:10px}#ea-location-dialog .ea-location-body iframe{height:clamp(240px,52vh,390px)}}
+@media(max-width:350px){#ea-isp-floating strong{font-size:.67rem}#ea-location-floating .ea-location-copy small{display:none}}
+@media(prefers-reduced-motion:reduce){#ea-isp-floating,#ea-location-floating{transition:none}}

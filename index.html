@@ -868,6 +868,7 @@
     </style>
     <link rel="stylesheet" href="assets/pos-promo/pos-promo.css" data-egha-pos-css>
     <link rel="stylesheet" href="assets/isp-promo/isp-promo.css" data-egha-isp-css>
+<link href="assets/isp-promo/float-controls.css" rel="stylesheet" data-egha-isp-float-css>
 </head>
 
 <body id="page-top">
@@ -1692,5 +1693,43 @@
 
 <script src="assets/pos-promo/pos-promo.js" defer data-egha-pos-js></script>
     <script src="assets/isp-promo/isp-promo.js" defer data-egha-isp-js></script>
+<!-- EGHAAPP_ISP_FLOAT_MAP_START -->
+<!-- Widget melayang ISP Billing; memakai dialog video/galeri dari section #paket. -->
+<button id="ea-isp-floating" class="ea-isp-floating" type="button"
+        aria-label="Buka video promosi dan galeri 5 foto ISP Billing EghaApp STUDIO"
+        aria-haspopup="dialog" aria-controls="ea-isp-dialog">
+  <span class="ea-isp-floating-icon" aria-hidden="true">◉</span>
+  <span class="ea-isp-floating-copy"><strong>Demo ISP Billing</strong><small>Video + 5 foto ›</small></span>
+</button>
+
+<!-- Tombol Maps ditempatkan di atas tombol chatbot di pojok kanan bawah. -->
+<button id="ea-location-floating" class="ea-location-floating" type="button"
+        aria-label="Lihat lokasi EghaApp STUDIO di Google Maps"
+        aria-haspopup="dialog" aria-controls="ea-location-dialog">
+  <span class="ea-location-marker" aria-hidden="true">📍</span>
+  <span class="ea-location-copy"><strong>Maps</strong><small>Lokasi kami</small></span>
+</button>
+
+<dialog id="ea-location-dialog" aria-labelledby="ea-location-title">
+  <div class="ea-location-head">
+    <div class="ea-location-brand">
+      <img src="assets/isp-promo/logo-eghaapp-studio.png" width="43" height="43" alt="" loading="lazy">
+      <div><strong id="ea-location-title">Lokasi EghaApp STUDIO</strong><small>Lihat titik lokasi melalui Google Maps</small></div>
+    </div>
+    <button id="ea-location-close" type="button" aria-label="Tutup peta">×</button>
+  </div>
+  <div class="ea-location-body">
+    <iframe id="ea-location-map" title="Pratinjau Google Maps" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            data-src="https://maps.google.com/maps?q=-7.5355116%2C108.8540988&amp;z=17&amp;output=embed"
+            allowfullscreen></iframe>
+    <p>Jika pratinjau peta tidak tampil, gunakan tombol berikut untuk membuka lokasi melalui Google Maps.</p>
+    <a class="ea-location-go" href="https://maps.app.goo.gl/TiEATr7SoULiys4z8"
+       target="_blank" rel="noopener noreferrer">📍 Buka Google Maps / Petunjuk Arah ↗</a>
+  </div>
+</dialog>
+<!-- EGHAAPP_ISP_FLOAT_MAP_END -->
+
+<script src="assets/isp-promo/float-controls.js" defer data-egha-isp-float-js></script>
 </body>
 </html>

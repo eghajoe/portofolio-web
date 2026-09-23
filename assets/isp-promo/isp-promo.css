@@ -1,0 +1,49 @@
+/* Scoped to the existing ISP Billing pricing section; POS and chatbot remain untouched. */
+#ea-isp-inline,#ea-isp-dialog{font-family:Inter,Manrope,system-ui,sans-serif;box-sizing:border-box}
+#ea-isp-inline *,#ea-isp-dialog *{box-sizing:border-box}
+#ea-isp-inline{margin:0 0 32px;display:grid;grid-template-columns:1.04fr .96fr;gap:28px;align-items:center;background:radial-gradient(circle at 84% 22%,#173c65,#0b2342 45%,#07182f 92%);border:1px solid #ddbb6570;border-radius:23px;padding:32px;color:#f7f9ff;overflow:hidden;box-shadow:0 18px 50px #06172c1a}
+#ea-isp-inline .ea-isp-eyebrow{display:inline-block;color:#ffd67c;border:1px solid #ddbb6580;border-radius:99px;padding:6px 13px;font-size:.72rem;letter-spacing:.08em;font-weight:800;margin-bottom:12px}
+#ea-isp-inline h3{font-family:Manrope,Inter,sans-serif;font-size:clamp(1.65rem,3vw,2.65rem);font-weight:800;line-height:1.15;letter-spacing:-.045em;margin:0 0 15px;color:#fff}
+#ea-isp-inline h3 em{font-style:normal;color:#ffd274}
+#ea-isp-inline p{color:#cfdbeb;font-size:.92rem;line-height:1.68;margin:0 0 16px}
+#ea-isp-inline .ea-isp-chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 23px}
+#ea-isp-inline .ea-isp-chips span{padding:5px 10px;border-radius:99px;background:#ffffff13;border:1px solid #ffffff26;color:#f4f8ff;font-size:.69rem;font-weight:650}
+#ea-isp-inline .ea-isp-actions{display:flex;flex-wrap:wrap;gap:10px}
+#ea-isp-inline .ea-isp-btn{font:800 .88rem Inter,system-ui,sans-serif;min-height:44px;border-radius:10px;padding:10px 16px;cursor:pointer;transition:transform .15s}
+#ea-isp-inline .ea-isp-btn:hover{transform:translateY(-2px)}
+#ea-isp-inline .ea-isp-primary{border:0;background:linear-gradient(130deg,#ffe28c,#e4a91e);color:#08192b}
+#ea-isp-inline .ea-isp-secondary{border:1px solid #e4c573;background:#ffffff10;color:#fff}
+#ea-isp-inline .ea-isp-disclaimer{font-size:.67rem;line-height:1.5;color:#aec4dc;margin:14px 0 0}
+#ea-isp-inline .ea-isp-cover{position:relative;display:block;width:100%;border:1px solid #e9c16bba;background:#09172e;border-radius:18px;padding:7px;overflow:hidden;box-shadow:0 14px 38px #0007;cursor:pointer;min-width:0;appearance:none}
+#ea-isp-inline .ea-isp-cover img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;border-radius:12px}
+#ea-isp-inline .ea-isp-play{display:grid;place-items:center;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:72px;width:72px;border-radius:50%;background:#f3c552f0;color:#07182f;font-size:1.4rem;box-shadow:0 7px 30px #0008;border:2px solid #fff8}
+#ea-isp-inline .ea-isp-cover-label{position:absolute;left:17px;bottom:18px;background:#061b36e3;border:1px solid #f2c65c88;border-radius:99px;padding:5px 11px;font-size:.64rem;font-weight:800;color:#ffe79b}
+#ea-isp-dialog{padding:0;border:1px solid #dcb55a;border-radius:17px;width:min(1010px,calc(100vw - 26px));max-width:none;max-height:calc(100dvh - 24px);overflow-y:auto;background:#091a30;color:#eff5ff;box-shadow:0 30px 95px #0009;overscroll-behavior:contain}
+#ea-isp-dialog::backdrop{background:#020b1edb;backdrop-filter:blur(7px)}
+#ea-isp-dialog .ea-isp-dialog-head{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 17px;background:#0a213f;border-bottom:1px solid #e9c76d6b}
+#ea-isp-dialog .ea-isp-dialog-brand{display:flex;align-items:center;gap:10px}
+#ea-isp-dialog .ea-isp-dialog-brand img{width:46px;height:46px;object-fit:contain;border-radius:9px;background:#fff}
+#ea-isp-dialog .ea-isp-dialog-brand strong{display:block;color:#ffe096;font-size:.94rem;line-height:1.3}
+#ea-isp-dialog .ea-isp-dialog-brand small{display:block;color:#ccdaea;font-size:.71rem}
+#ea-isp-dialog .ea-isp-close{flex:none;background:#ffffff1c;border:1px solid #ffffff4a;border-radius:10px;color:#fff;width:41px;height:41px;font-size:1.5rem;cursor:pointer}
+#ea-isp-dialog .ea-isp-dialog-body{padding:17px 21px 21px}
+#ea-isp-dialog .ea-isp-tabs{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 13px}
+#ea-isp-dialog .ea-isp-tab{border:1px solid #f3cf6c66;border-radius:10px;background:#ffffff12;color:#e1ebf9;padding:10px 16px;font:750 .82rem Inter,system-ui,sans-serif;cursor:pointer}
+#ea-isp-dialog .ea-isp-tab[aria-pressed="true"]{background:#f5cf75;color:#091d32}
+#ea-isp-dialog [data-ea-isp-panel][hidden],#ea-isp-dialog .ea-isp-slide[hidden]{display:none!important}
+#ea-isp-dialog .ea-isp-video{display:block;width:100%;max-height:63dvh;aspect-ratio:16/9;object-fit:contain;border-radius:12px;background:#071020}
+#ea-isp-dialog .ea-isp-viewer{width:100%;aspect-ratio:16/9;position:relative;display:grid;place-items:center;background:#040e1e;border:1px solid #e6ba5d88;border-radius:12px;overflow:hidden;touch-action:pan-y}
+#ea-isp-dialog .ea-isp-slide{display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+#ea-isp-dialog .ea-isp-arrow{position:absolute;z-index:1;top:50%;transform:translateY(-50%);width:43px;height:53px;display:grid;place-items:center;background:#091d36d9;border:1px solid #ffffff78;border-radius:10px;color:#fff;font-size:1.6rem;cursor:pointer}
+#ea-isp-dialog .ea-isp-arrow:hover{background:#deb23b;color:#08192d}
+#ea-isp-dialog .ea-isp-arrow.prev{left:8px}#ea-isp-dialog .ea-isp-arrow.next{right:8px}
+#ea-isp-dialog .ea-isp-gallery-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:9px;margin-top:10px}
+#ea-isp-dialog .ea-isp-counter{font-size:.79rem;color:#dce7f4}
+#ea-isp-dialog .ea-isp-dots{display:flex;gap:8px;align-items:center}
+#ea-isp-dialog .ea-isp-dot{padding:0;width:11px;height:11px;border-radius:20px;background:#ffffff63;border:1px solid #edc866aa;cursor:pointer}
+#ea-isp-dialog .ea-isp-dot[aria-current="true"]{width:27px;background:#ffd36c}
+#ea-isp-dialog .ea-isp-foot{color:#bcd0e5;margin:15px 0 0;font-size:.74rem;line-height:1.55}
+#ea-isp-inline button:focus-visible,#ea-isp-dialog button:focus-visible,#ea-isp-dialog .ea-isp-viewer:focus-visible{outline:3px solid #7bc8ff;outline-offset:3px}
+@media(max-width:900px){#ea-isp-inline{grid-template-columns:1fr;gap:18px;padding:24px}#ea-isp-inline .ea-isp-cover{max-width:740px}#ea-isp-dialog .ea-isp-dialog-body{padding:12px}}
+@media(max-width:550px){#ea-isp-inline{padding:17px;border-radius:15px}#ea-isp-inline h3{font-size:1.72rem}#ea-isp-inline .ea-isp-actions{flex-direction:column}#ea-isp-inline .ea-isp-btn{width:100%}#ea-isp-dialog{width:calc(100vw - 10px);max-height:calc(100dvh - 10px);border-radius:12px}#ea-isp-dialog .ea-isp-arrow{width:32px;height:42px;font-size:1.3rem}#ea-isp-dialog .ea-isp-arrow.prev{left:3px}#ea-isp-dialog .ea-isp-arrow.next{right:3px}}
+@media(prefers-reduced-motion:reduce){#ea-isp-inline .ea-isp-btn{transition:none}}

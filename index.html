@@ -56,6 +56,23 @@
             width:min(1180px,calc(100% - 40px));
             margin:auto;
         }
+        /* PROMO DOMaiNesia di atas navbar */
+        .promo-banner{
+            position:fixed;top:0;left:0;right:0;z-index:1050;
+            display:flex;align-items:center;justify-content:center;
+            min-height:90px;padding:0 8px;
+            background:#f7f9fc;border-bottom:1px solid rgba(212,175,55,.55);
+        }
+        .promo-banner a{display:block;width:min(728px,100%)}
+        .promo-banner img{display:block;width:100%;height:auto;max-height:90px;object-fit:contain;margin:auto}
+        .navbar-custom.fixed-top{top:90px}
+        body{padding-top:156px}
+        @media(max-width:600px){
+            .promo-banner{min-height:0;padding:0;background:#fff}
+            .promo-banner img{max-height:none}
+            .navbar-custom.fixed-top{top:calc(100vw * 90 / 728)}
+            body{padding-top:calc(100vw * 90 / 728 + 66px)}
+        }
 
         /* NAVBAR */
         .navbar-custom{
@@ -872,7 +889,12 @@
 </head>
 
 <body id="page-top">
-    <a href="https://my.domainesia.com/ref.php?u=27576"><img src="https://dnva.me/v9ev4" width="728px" height="90px" alt="DomaiNesia"></a>
+    <!-- PROMO DOMaiNesia: banner di atas header -->
+<div class="promo-banner" aria-label="Promo DomaiNesia">
+    <a href="https://my.domainesia.com/ref.php?u=27576" target="_blank" rel="noopener sponsored" aria-label="Lihat promo DomaiNesia">
+        <img src="https://dnva.me/v9ev4" alt="Promo DomaiNesia" width="728" height="90">
+    </a>
+</div>
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="mainNav">

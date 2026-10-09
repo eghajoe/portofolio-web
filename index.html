@@ -883,6 +883,89 @@
             .hero-actions{grid-template-columns:1fr}
         }
     </style>
+    <style>
+    /* DomaiNesia partner promo — integrated into the page, not a floating overlay */
+        .domainesia-promo {
+            padding: 28px 18px 34px;
+            background: #f7f8fc;
+            text-align: center;
+        }
+        .domainesia-promo-card {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid rgba(212, 175, 55, .45);
+            border-radius: 18px;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f7fc 100%);
+            box-shadow: 0 10px 28px rgba(15, 29, 58, .08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+            text-align: left;
+        }
+        .domainesia-promo-copy {
+            flex: 1 1 220px;
+            min-width: 0;
+        }
+        .domainesia-promo-kicker {
+            display: inline-block;
+            margin-bottom: 8px;
+            color: #a88412;
+            font-size: .76rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+        .domainesia-promo-copy h3 {
+            margin: 0 0 8px;
+            color: #14213d;
+            font-size: 1.18rem;
+            line-height: 1.35;
+        }
+        .domainesia-promo-copy p {
+            margin: 0;
+            color: #5e6678;
+            font-size: .92rem;
+            line-height: 1.6;
+        }
+        .domainesia-promo-image {
+            display: block;
+            width: min(100%, 280px);
+            height: auto;
+            aspect-ratio: 7 / 5;
+            object-fit: contain;
+            border-radius: 10px;
+            flex: 0 1 280px;
+        }
+        .domainesia-promo-link {
+            display: inline-block;
+            margin-top: 13px;
+            padding: 9px 15px;
+            border-radius: 999px;
+            background: #14213d;
+            color: #f4d35e !important;
+            font-size: .84rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .domainesia-promo-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(20, 33, 61, .18);
+        }
+        @media (max-width: 600px) {
+            .domainesia-promo { padding: 22px 14px 28px; }
+            .domainesia-promo-card {
+                padding: 16px;
+                flex-direction: column;
+                gap: 14px;
+                text-align: center;
+            }
+            .domainesia-promo-image { width: min(100%, 350px); flex-basis: auto; }
+            .domainesia-promo-copy h3 { font-size: 1.05rem; }
+        }
+        </style>
     <link rel="stylesheet" href="assets/pos-promo/pos-promo.css" data-egha-pos-css>
     <link rel="stylesheet" href="assets/isp-promo/isp-promo.css" data-egha-isp-css>
 <link href="assets/isp-promo/float-controls.css" rel="stylesheet" data-egha-isp-float-css>
@@ -1356,6 +1439,30 @@
 
 
 <!-- CONTACT -->
+     <!-- Promo partner DomaiNesia: tampil menyatu dengan konten, bukan pop-up -->
+    <section class="domainesia-promo" aria-label="Promo partner DomaiNesia">
+        <div class="domainesia-promo-card">
+            <div class="domainesia-promo-copy">
+                <span class="domainesia-promo-kicker">Partner pilihan</span>
+                <h3>Mulai Bangun Website Anda</h3>
+                <p>Butuh domain atau hosting untuk ide digital berikutnya? Lihat penawaran dari DomaiNesia.</p>
+                <a class="domainesia-promo-link"
+                   href="https://my.domainesia.com/ref.php?u=27576"
+                   target="_blank" rel="sponsored noopener noreferrer">
+                    Lihat Promo <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+            <a href="https://my.domainesia.com/ref.php?u=27576"
+               target="_blank" rel="sponsored noopener noreferrer"
+               aria-label="Lihat promo DomaiNesia">
+                <img class="domainesia-promo-image"
+                     src="https://dnva.me/kw7xi"
+                     width="350" height="250"
+                     alt="Promo DomaiNesia"
+                     loading="lazy">
+            </a>
+        </div>
+    </section>
 <section id="kontak" class="contact-section">
     <div class="container-custom">
 

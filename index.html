@@ -56,22 +56,31 @@
             width:min(1180px,calc(100% - 40px));
             margin:auto;
         }
-        /* PROMO DOMaiNesia di atas navbar */
+        /* PROMO BANNER GABUNGAN */
         .promo-banner{
             position:fixed;top:0;left:0;right:0;z-index:1050;
-            display:flex;align-items:center;justify-content:center;gap:15px;
-            min-height:90px;padding:0 8px;
+            display:flex;flex-direction:row;align-items:center;justify-content:center;gap:10px;
+            min-height:90px;padding:5px 10px;
             background:#f7f9fc;border-bottom:1px solid rgba(212,175,55,.55);
         }
-        .promo-banner a{display:block;width:auto;max-width:50%}
-        .promo-banner img{display:block;width:100%;height:auto;max-height:90px;object-fit:contain;margin:auto}
+        .promo-banner a {
+            display:block;
+            flex: 1 1 50%; /* Membagi ruang persis 50:50 */
+            max-width: 728px; 
+            text-align: center;
+        }
+        .promo-banner img {
+            display:inline-block;width:100%;height:auto;max-height:80px;object-fit:contain;
+        }
         .navbar-custom.fixed-top{top:90px}
         body{padding-top:156px}
+        
+        /* Penyesuaian khusus layar HP */
         @media(max-width:600px){
-            .promo-banner{min-height:0;padding:0;background:#fff}
-            .promo-banner img{max-height:none}
-            .navbar-custom.fixed-top{top:calc(100vw * 90 / 728)}
-            body{padding-top:calc(100vw * 90 / 728 + 66px)}
+            .promo-banner { min-height:auto; padding:5px; gap:5px; }
+            .promo-banner img { max-height:50px; }
+            .navbar-custom.fixed-top { top:60px; }
+            body { padding-top:126px; }
         }
 
         /* NAVBAR */
@@ -972,14 +981,13 @@
 </head>
 
 <body id="page-top">
-    <!-- PROMO DOMaiNesia: banner di atas header -->
-<!-- PROMO BANNER: di atas header -->
+    <!-- PROMO BANNER: di atas header -->
 <div class="promo-banner" aria-label="Promo Banner">
     <a href="https://my.domainesia.com/ref.php?u=27576" target="_blank" rel="noopener sponsored" aria-label="Lihat promo DomaiNesia">
-        <img src="https://dnva.me/v9ev4" alt="Promo DomaiNesia" width="728" height="90">
+        <img src="https://dnva.me/v9ev4" alt="Promo DomaiNesia">
     </a>
     <a href="https://atid.me/adv.php?rk=00ria8002s3h" target="_blank" rel="noopener sponsored" aria-label="Lihat Promo Partner">
-        <img src="https://imp.accesstra.de/img.php?rk=00ria8002s3h" border="0" alt="Promo Partner"/>
+        <img src="https://imp.accesstra.de/img.php?rk=00ria8002s3h" border="0" alt="Promo Accesstrade"/>
     </a>
 </div>
 

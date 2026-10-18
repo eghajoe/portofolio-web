@@ -869,18 +869,23 @@ footer { margin-top: 55px; padding-top: 26px; border-top: 1px solid rgba(255,255
 
 @media (max-width: 600px) {
     .promo-banner { 
-        min-height: 55px; 
-        height: 55px; 
-        padding: 5px; 
-        gap: 5px; 
+        flex-direction: column; 
+        height: auto;
+        min-height: 95px;
+        padding: 8px 5px; 
+        gap: 6px; 
+    }
+.promo-banner a {
+        flex: none;
+        width: 100%;
     }
     .promo-banner img { 
-        max-height: 45px; 
+        max-height: 40px; 
         width: auto;
         max-width: 100%;
     }
-    .navbar-custom.fixed-top { top: 55px; }
-    body { padding-top: 115px; }
+    .navbar-custom.fixed-top { top: 95px; }
+    body { padding-top: 165px; }
     .container-custom { width: min(100% - 28px, 1180px); }
     .hero-section { padding: 96px 0 62px; }
     .hero-photo-area { min-height: 280px; }

@@ -975,12 +975,109 @@
             .domainesia-promo-copy h3 { font-size: 1.05rem; }
         }
         </style>
+<style>
+        /* Styling untuk MLSA Announcement Bar secara Utuh */
+        .mlsa-announcement-bar {
+            background: linear-gradient(90deg, #0078d4, #00bcf2); /* Gradasi warna khas Microsoft */
+            color: #ffffff;
+            padding: 10px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .mlsa-bar-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mlsa-badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .mlsa-text {
+            margin: 0;
+            padding: 0;
+            line-height: 1.4;
+            letter-spacing: 0.3px;
+        }
+
+        .mlsa-btn {
+            background-color: #ffffff;
+            color: #0078d4;
+            text-decoration: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .mlsa-btn:hover {
+            background-color: #f3f2f1;
+            color: #005a9e;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Optimasi Tampilan Responsif (Mobile / Handphone) */
+        @media (max-width: 680px) {
+            .mlsa-bar-content {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .mlsa-announcement-bar {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+            .mlsa-badge {
+                font-size: 10px;
+                padding: 2px 6px;
+            }
+            .mlsa-btn {
+                font-size: 11px;
+                padding: 5px 10px;
+                width: 100%; /* Tombol melebar penuh pada layar handphone */
+                box-sizing: border-box;
+                text-align: center;
+            }
+        }
+    </style>
     <link rel="stylesheet" href="assets/pos-promo/pos-promo.css" data-egha-pos-css>
     <link rel="stylesheet" href="assets/isp-promo/isp-promo.css" data-egha-isp-css>
 <link href="assets/isp-promo/float-controls.css" rel="stylesheet" data-egha-isp-float-css>
 </head>
 
 <body id="page-top">
+<div class="mlsa-announcement-bar">
+        <div class="mlsa-bar-content">
+            <span class="mlsa-badge">⏳ Under Review</span>
+            <p class="mlsa-text">
+                Aspiring <strong>Microsoft Learn Student Ambassador</strong> | Undergraduate Student at <strong>UNIKMA Cilacap</strong>.
+            </p>
+            <a href="https://microsoft.com" class="mlsa-btn" target="_blank" rel="noopener noreferrer">
+                Lihat Progres Belajar ↗
+            </a>
+        </div>
+    </div>
     <!-- PROMO BANNER: di atas header -->
 <div class="promo-banner" aria-label="Promo Banner">
     <a href="https://my.domainesia.com/ref.php?u=27576" target="_blank" rel="noopener sponsored" aria-label="Lihat promo DomaiNesia">

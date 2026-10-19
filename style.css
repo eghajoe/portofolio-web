@@ -356,11 +356,6 @@ img { max-width: 100%; display: block; }
 /* ==========================================================================
    FOTO OUT OF FRAME (BERANDA & TENTANG SAYA)
    ========================================================================== */
-
-/* ==========================================================================
-   FOTO OUT OF FRAME (BERANDA & TENTANG SAYA)
-   ========================================================================== */
-
 .hero-photo-area, .about-visual-container {
     position: relative;
     min-height: 450px;
@@ -871,7 +866,6 @@ footer { margin-top: 55px; padding-top: 26px; border-top: 1px solid rgba(255,255
    MEDIA QUERIES (RESPONSIVE)
    ========================================================================== */
 @media (max-width: 991px) {
-    /* Bagian ini mengatur menu navbar HP agar muncul sebagai kotak dropdown */
     .navbar-collapse {
         margin-top: 12px; padding: 14px; border-radius: 14px;
         background: rgba(4,16,31,.98); border: 1px solid rgba(255,255,255,.07);
@@ -881,23 +875,11 @@ footer { margin-top: 55px; padding-top: 26px; border-top: 1px solid rgba(255,255
     .hero-section { min-height: auto; padding: 110px 0 72px; }
     .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 20px; }
     
-    /* Penyesuaian Foto Hero Baru (Out of Frame) */
+    /* Penyesuaian Foto Out of Frame (Tablet) */
     .hero-photo-area { order: -1; min-height: 360px; }
-    .out-frame-wrapper-gold { width: 300px; height: 300px; margin: 0 auto; }
-    .circle-bg-gold { width: 270px; height: 270px; }
-    .egha-image-outframe, .egha-image-about {
-        bottom: -35px; /* Tarikan ke bawah disesuaikan untuk tablet */
-        width: 120%;
-    }
-}
-
-    /* Penyesuaian Foto About Baru (Out of Frame) */
     .about-visual-container { min-height: 360px; margin-bottom: 30px; }
-    .out-frame-wrapper-gold, .out-frame-wrapper-about {
-        width: 280px; height: 280px;
-    }
-    .circle-bg-about { width: 260px; height: 260px; }
-    .egha-image-about { max-height: 133%; transform: translateY(6px) scale(1.02); }
+    .out-frame-wrapper-gold, .out-frame-wrapper-about { width: 280px; height: 280px; }
+    .egha-image-outframe, .egha-image-about { bottom: -35px; width: 120%; }
 
     .hello-badge, .hero-desc { margin-left: auto; margin-right: auto; }
     .hero-actions, .hero-social { justify-content: center; }
@@ -920,42 +902,21 @@ footer { margin-top: 55px; padding-top: 26px; border-top: 1px solid rgba(255,255
 
 @media (max-width: 600px) {
     .promo-banner { 
-        flex-direction: column; 
-        height: auto;
-        min-height: 95px;
-        padding: 8px 5px; 
-        gap: 6px; 
+        flex-direction: column; height: auto; min-height: 95px;
+        padding: 8px 5px; gap: 6px; 
     }
-    .promo-banner a {
-        flex: none;
-        width: 100%;
-    }
-    .promo-banner img { 
-        max-height: 40px; 
-        width: auto;
-        max-width: 100%;
-    }
+    .promo-banner a { flex: none; width: 100%; }
+    .promo-banner img { max-height: 40px; width: auto; max-width: 100%; }
     .navbar-custom.fixed-top { top: 95px; }
     body { padding-top: 165px; }
     .container-custom { width: min(100% - 28px, 1180px); }
     .hero-section { padding: 96px 0 62px; }
     
-    /* Penyesuaian Foto Hero Baru (Out of Frame) Khusus HP */
+    /* Penyesuaian Foto Out of Frame (HP) */
     .hero-photo-area { min-height: 290px; margin-bottom: 10px; }
-    .out-frame-wrapper-gold, .out-frame-wrapper-about {
-        width: 240px; height: 240px;
-    }
-    .circle-bg-gold { width: 220px; height: 220px; }
-    .egha-image-outframe, .egha-image-about {
-        bottom: -25px; /* Tarikan ke bawah disesuaikan untuk layar HP */
-        width: 120%;
-    }
-}
-    /* Penyesuaian Foto About Baru (Out of Frame) Khusus HP */
     .about-visual-container { min-height: 290px; margin-bottom: 25px; }
-    .out-frame-wrapper-about { width: 240px; height: 240px; margin: 0 auto; }
-    .circle-bg-about { width: 215px; height: 215px; }
-    .egha-image-about { max-height: 135%; transform: translateY(4px) scale(1.03); }
+    .out-frame-wrapper-gold, .out-frame-wrapper-about { width: 240px; height: 240px; }
+    .egha-image-outframe, .egha-image-about { bottom: -25px; width: 120%; }
 
     .hero-title { font-size: 2.35rem; letter-spacing: -1px; }
     .hero-role { font-size: .95rem; }

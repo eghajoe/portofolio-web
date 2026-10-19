@@ -365,57 +365,70 @@ img { max-width: 100%; display: block; }
     z-index: 5;
 }
 
-/* Pembungkus Beranda */
-.out-frame-wrapper-gold {
+/* Pembungkus Frame Utama */
+.out-frame-wrapper-gold, .out-frame-wrapper-about {
     position: relative;
     width: 330px;
     height: 330px;
     margin: 0 auto;
 }
 
-/* Pembungkus Tentang Saya */
-.out-frame-wrapper-about {
-    position: relative;
-    width: 330px;
-    height: 330px;
-    margin: 0 auto;
-}
-
-/* Lingkaran Beranda (Emas) */
+/* 1. Background Lingkaran Paling Belakang */
 .circle-bg-gold {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
+    position: absolute; inset: 0; border-radius: 50%;
     background: linear-gradient(135deg, #ffd65a, #cf9700);
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
-    border: 4px solid #D4AF37;
     z-index: 1; 
 }
-
-/* Lingkaran Tentang Saya (Gelap) */
 .circle-bg-about {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
+    position: absolute; inset: 0; border-radius: 50%;
     background: linear-gradient(145deg, #07182f, #10284a);
-    border: 4px solid #f5bb22;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
     z-index: 1;
 }
 
-/* Pengaturan Foto Keluar Frame (Berlaku untuk Keduanya) */
+/* 2. Border Setengah ATAS (Diletakkan di BELAKANG Foto) */
+.out-frame-wrapper-gold::before {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    border: 4px solid #D4AF37;
+    clip-path: polygon(-10% -10%, 110% -10%, 110% 50%, -10% 50%);
+    z-index: 1; pointer-events: none;
+}
+.out-frame-wrapper-about::before {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    border: 4px solid #f5bb22;
+    clip-path: polygon(-10% -10%, 110% -10%, 110% 50%, -10% 50%);
+    z-index: 1; pointer-events: none;
+}
+
+/* 3. Border Setengah BAWAH (Diletakkan di DEPAN Foto) */
+.out-frame-wrapper-gold::after {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    border: 4px solid #D4AF37;
+    clip-path: polygon(-10% 50%, 110% 50%, 110% 110%, -10% 110%);
+    z-index: 3; pointer-events: none;
+}
+.out-frame-wrapper-about::after {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    border: 4px solid #f5bb22;
+    clip-path: polygon(-10% 50%, 110% 50%, 110% 110%, -10% 110%);
+    z-index: 3; pointer-events: none;
+}
+
+/* 4. Pengaturan Foto (Di Tengah-tengah Border) */
 .egha-image-outframe, .egha-image-about {
     position: absolute;
-    /* PENTING: Angka -45px ini menarik foto ke bawah untuk menutupi ruang kosong transparan */
-    bottom: -45px; 
-    left: 50%;
-    transform: translateX(-50%);
-    /* PENTING: Foto diperbesar 120% agar badan menutupi penuh sisi kiri/kanan lingkaran */
-    width: 120%; 
+    bottom: 0; /* Menempel persis di dasar border lingkaran */
+    left: 50%; transform: translateX(-50%);
+    width: 310px; /* Ukuran pas menempati ruang dalam lingkaran */
     height: auto;
-    z-index: 2; 
-    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
+    z-index: 2; /* Berada di depan background, tapi di belakang border bawah */
+    
+    /* Memotong rapi ujung bawah foto mengikuti lengkung lingkaran */
+    border-radius: 0 0 155px 155px; 
+    
     pointer-events: none;
+    filter: drop-shadow(0 -5px 15px rgba(0,0,0,0.25));
 }
 
 /* --- ELEMEN HIASAN (TITIK-TITIK & TEKS) YANG TETAP DIPERTAHANKAN --- */
@@ -879,7 +892,7 @@ footer { margin-top: 55px; padding-top: 26px; border-top: 1px solid rgba(255,255
     .hero-photo-area { order: -1; min-height: 360px; }
     .about-visual-container { min-height: 360px; margin-bottom: 30px; }
     .out-frame-wrapper-gold, .out-frame-wrapper-about { width: 280px; height: 280px; }
-    .egha-image-outframe, .egha-image-about { bottom: -35px; width: 120%; }
+    .egha-image-outframe, .egha-image-about { width: 260px; border-radius: 0 0 130px 130px; }
 
     .hello-badge, .hero-desc { margin-left: auto; margin-right: auto; }
     .hero-actions, .hero-social { justify-content: center; }
@@ -916,7 +929,7 @@ footer { margin-top: 55px; padding-top: 26px; border-top: 1px solid rgba(255,255
     .hero-photo-area { min-height: 290px; margin-bottom: 10px; }
     .about-visual-container { min-height: 290px; margin-bottom: 25px; }
     .out-frame-wrapper-gold, .out-frame-wrapper-about { width: 240px; height: 240px; }
-    .egha-image-outframe, .egha-image-about { bottom: -25px; width: 120%; }
+    .egha-image-outframe, .egha-image-about { width: 220px; border-radius: 0 0 110px 110px; }
 
     .hero-title { font-size: 2.35rem; letter-spacing: -1px; }
     .hero-role { font-size: .95rem; }

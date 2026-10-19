@@ -357,52 +357,70 @@ img { max-width: 100%; display: block; }
    FOTO OUT OF FRAME (BERANDA & TENTANG SAYA)
    ========================================================================== */
 
-/* --- 1. BERANDA (HERO SECTION) --- */
-.hero-photo-area {
+/* ==========================================================================
+   FOTO OUT OF FRAME (BERANDA & TENTANG SAYA)
+   ========================================================================== */
+
+.hero-photo-area, .about-visual-container {
     position: relative;
+    min-height: 450px;
     display: flex;
-    align-items: flex-end; 
+    align-items: center; 
     justify-content: center;
-    min-height: 480px;
     z-index: 5;
 }
 
+/* Pembungkus Beranda */
 .out-frame-wrapper-gold {
     position: relative;
-    width: 360px;
-    height: 360px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    z-index: 5;
-}
-
-.circle-bg-gold {
-    position: absolute;
-    bottom: 0;
     width: 330px;
     height: 330px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #ffd65a, #cf9700);
-    box-shadow: 
-        0 0 0 12px rgba(255, 255, 255, 0.03), 
-        0 25px 55px rgba(0, 0, 0, 0.45), 
-        inset 0 0 20px rgba(0, 0, 0, 0.4);
-    border: 3px solid #D4AF37;
-    z-index: 1; 
-    pointer-events: none;
+    margin: 0 auto;
 }
 
-.egha-image-outframe {
+/* Pembungkus Tentang Saya */
+.out-frame-wrapper-about {
     position: relative;
-    width: 105%; 
+    width: 330px;
+    height: 330px;
+    margin: 0 auto;
+}
+
+/* Lingkaran Beranda (Emas) */
+.circle-bg-gold {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffd65a, #cf9700);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+    border: 4px solid #D4AF37;
+    z-index: 1; 
+}
+
+/* Lingkaran Tentang Saya (Gelap) */
+.circle-bg-about {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #07182f, #10284a);
+    border: 4px solid #f5bb22;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    z-index: 1;
+}
+
+/* Pengaturan Foto Keluar Frame (Berlaku untuk Keduanya) */
+.egha-image-outframe, .egha-image-about {
+    position: absolute;
+    /* PENTING: Angka -45px ini menarik foto ke bawah untuk menutupi ruang kosong transparan */
+    bottom: -45px; 
+    left: 50%;
+    transform: translateX(-50%);
+    /* PENTING: Foto diperbesar 120% agar badan menutupi penuh sisi kiri/kanan lingkaran */
+    width: 120%; 
     height: auto;
-    max-height: 140%; 
-    object-fit: contain;
     z-index: 2; 
-    transform: translateY(12px) scale(1.05); 
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
     pointer-events: none;
-    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
 }
 
 /* --- ELEMEN HIASAN (TITIK-TITIK & TEKS) YANG TETAP DIPERTAHANKAN --- */
@@ -867,11 +885,17 @@ footer { margin-top: 55px; padding-top: 26px; border-top: 1px solid rgba(255,255
     .hero-photo-area { order: -1; min-height: 360px; }
     .out-frame-wrapper-gold { width: 300px; height: 300px; margin: 0 auto; }
     .circle-bg-gold { width: 270px; height: 270px; }
-    .egha-image-outframe { max-height: 138%; transform: translateY(10px) scale(1.04); }
+    .egha-image-outframe, .egha-image-about {
+        bottom: -35px; /* Tarikan ke bawah disesuaikan untuk tablet */
+        width: 120%;
+    }
+}
 
     /* Penyesuaian Foto About Baru (Out of Frame) */
     .about-visual-container { min-height: 360px; margin-bottom: 30px; }
-    .out-frame-wrapper-about { width: 290px; height: 290px; margin: 0 auto; }
+    .out-frame-wrapper-gold, .out-frame-wrapper-about {
+        width: 280px; height: 280px;
+    }
     .circle-bg-about { width: 260px; height: 260px; }
     .egha-image-about { max-height: 133%; transform: translateY(6px) scale(1.02); }
 
@@ -918,10 +942,15 @@ footer { margin-top: 55px; padding-top: 26px; border-top: 1px solid rgba(255,255
     
     /* Penyesuaian Foto Hero Baru (Out of Frame) Khusus HP */
     .hero-photo-area { min-height: 290px; margin-bottom: 10px; }
-    .out-frame-wrapper-gold { width: 240px; height: 240px; margin: 0 auto; }
+    .out-frame-wrapper-gold, .out-frame-wrapper-about {
+        width: 240px; height: 240px;
+    }
     .circle-bg-gold { width: 220px; height: 220px; }
-    .egha-image-outframe { max-height: 140%; transform: translateY(8px) scale(1.05); }
-
+    .egha-image-outframe, .egha-image-about {
+        bottom: -25px; /* Tarikan ke bawah disesuaikan untuk layar HP */
+        width: 120%;
+    }
+}
     /* Penyesuaian Foto About Baru (Out of Frame) Khusus HP */
     .about-visual-container { min-height: 290px; margin-bottom: 25px; }
     .out-frame-wrapper-about { width: 240px; height: 240px; margin: 0 auto; }

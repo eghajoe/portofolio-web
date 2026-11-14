@@ -648,27 +648,41 @@
     </div>
 </section>
 
-<!-- CHATBOT -->
+<!-- CHATBOT AI -->
 <div id="chat-container">
     <div id="chat-window">
         <div id="chat-header">
-            <span><i class="bi bi-robot me-2"></i> Asisten EghaApp</span>
+            <span><i class="bi bi-robot me-2"></i> Asisten AI EghaApp</span>
             <i class="bi bi-x-lg" style="cursor:pointer" onclick="toggleChat()" title="Tutup"></i>
         </div>
 
         <div id="chat-messages">
             <div class="msg-bubble msg-bot">
-                Halo! 👋 Saya adalah asisten virtual Helga. Ada yang ingin Anda ketahui tentang keahlian atau layanan kami?
+                Halo! 👋 Saya asisten AI <strong>EghaApp Studio</strong>. Silakan pilih topik di bawah atau ketik pertanyaan Anda seputar jasa pembuatan aplikasi, POS Kasir, ISP Billing, maupun desain 3D &amp; bordir.
             </div>
         </div>
 
         <div id="chat-options">
-            <button class="chat-opt-btn" onclick="userSelectOption('siapa')">🤔 Siapa Helga itu?</button>
-            <button class="chat-opt-btn" onclick="userSelectOption('jasa')">💼 Layanan apa yang ditawarkan?</button>
-            <button class="chat-opt-btn" onclick="userSelectOption('ai')">🤖 Bagaimana konsep AI-Assisted Dev?</button>
-            <button class="chat-opt-btn" onclick="userSelectOption('kontak')">📞 Bagaimana cara order / kontak?</button>
+            <button type="button" class="chat-opt-btn" onclick="kirimPertanyaanCepat('Siapa Helga Rizka Putra Prayoga dan apa keahliannya?')">🤔 Siapa Helga itu?</button>
+            <button type="button" class="chat-opt-btn" onclick="kirimPertanyaanCepat('Layanan dan aplikasi apa saja yang ditawarkan EghaApp Studio?')">💼 Layanan &amp; Produk</button>
+            <button type="button" class="chat-opt-btn" onclick="kirimPertanyaanCepat('Berapa harga paket promo EghaApp ISP Billing Pro?')">📡 Promo ISP Billing</button>
+            <button type="button" class="chat-opt-btn" onclick="kirimPertanyaanCepat('Bagaimana cara memesan atau menghubungi Helga?')">📞 Cara Order / Kontak</button>
         </div>
+
+        <form id="chat-input-form" onsubmit="handleChatSubmit(event)" style="display:flex; gap:6px; padding:10px; background:#07182f; border-top:1px solid rgba(212,175,55,0.3);">
+            <input type="text" id="chat-user-input" placeholder="Tulis pertanyaan Anda..." autocomplete="off" required
+                   style="flex:1; background:#0d2342; color:#fff; border:1px solid rgba(212,175,55,0.4); border-radius:20px; padding:7px 14px; font-size:0.85rem; outline:none;">
+            <button type="submit" id="chat-send-btn" aria-label="Kirim pesan"
+                    style="background:#d4af37; color:#07182f; border:none; border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-weight:bold; cursor:pointer; flex-shrink:0;">
+                <i class="bi bi-send-fill"></i>
+            </button>
+        </form>
     </div>
+
+    <button id="chat-toggle-btn" onclick="toggleChat()" aria-label="Buka chatbot">
+        <i class="bi bi-chat-dots-fill"></i>
+    </button>
+</div>
 
     <button id="chat-toggle-btn" onclick="toggleChat()" aria-label="Buka chatbot">
         <i class="bi bi-chat-dots-fill"></i>
@@ -816,48 +830,75 @@
 
     revealItems.forEach(item => observer.observe(item));
 
-    // CHATBOT
+    // CHATBOT AI (TERHUBUNG KE CLOUDFLARE WORKER + GROQ)
+    const WORKER_AI_URL = "https://GANTI-DENGAN-URL-WORKER-ANDA.workers.dev";
+
     const chatWindow = document.getElementById('chat-window');
     const chatMessages = document.getElementById('chat-messages');
     const chatOptions = document.getElementById('chat-options');
+    const chatUserInput = document.getElementById('chat-user-input');
+    const chatSendBtn = document.getElementById('chat-send-btn');
     const chatBtnIcon = document.querySelector('#chat-toggle-btn i');
 
     function toggleChat() {
         const isOpen = chatWindow.style.display === 'flex';
-
         chatWindow.style.display = isOpen ? 'none' : 'flex';
 
         chatBtnIcon.classList.toggle('bi-chat-dots-fill', isOpen);
         chatBtnIcon.classList.toggle('bi-x-lg', !isOpen);
+
+        if (!isOpen && chatUserInput) {
+            setTimeout(() => chatUserInput.focus(), 150);
+        }
     }
 
-    const botAnswers = {
-        siapa: "Helga adalah seorang profesional yang memadukan keahlian logika sebagai Software Engineer dengan kreativitas visual pada desain 3D dan bordir digital.",
-        jasa: "Layanan yang ditawarkan mencakup pembuatan Web App, software khusus seperti pengolah data atau konverter, desain arsitektur 3D, desain matriks digital (punching) untuk mesin bordir, serta EghaApp ISP Billing dengan paket tahunan yang sudah termasuk support & maintenance.",
-        ai: "AI digunakan sebagai alat bantu analitis untuk mempercepat penyusunan logika awal, debugging dan problem-solving. Hasilnya tetap dikurasi, dimodifikasi dan disesuaikan dengan arsitektur aplikasi.",
-        kontak: "Anda dapat menghubungi Helga melalui tombol WhatsApp atau Email pada bagian Kontak di halaman ini."
-    };
+    function kirimPertanyaanCepat(teksPertanyaan) {
+        if (chatOptions) chatOptions.style.display = 'none';
+        prosesKirimKeAI(teksPertanyaan);
+    }
 
-    function userSelectOption(key) {
-        chatOptions.style.display = 'none';
+    function handleChatSubmit(event) {
+        event.preventDefault();
+        const teks = chatUserInput.value.trim();
+        if (!teks) return;
 
-        const questionMap = {
-            siapa: "Siapa Helga itu?",
-            jasa: "Layanan apa yang ditawarkan?",
-            ai: "Bagaimana konsep AI-Assisted Dev?",
-            kontak: "Bagaimana cara order / kontak?"
-        };
+        chatUserInput.value = '';
+        if (chatOptions) chatOptions.style.display = 'none';
+        prosesKirimKeAI(teks);
+    }
 
-        appendMessage(questionMap[key], 'user');
+    async function prosesKirimKeAI(pesanUser) {
+        appendMessage(pesanUser, 'user');
+        chatUserInput.disabled = true;
+        chatSendBtn.disabled = true;
+
         const typingId = showTypingIndicator();
 
-        setTimeout(() => {
+        try {
+            const response = await fetch(WORKER_AI_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: pesanUser })
+            });
+
+            const data = await response.json();
             const typing = document.getElementById(typingId);
             if (typing) typing.remove();
 
-            appendMessage(botAnswers[key], 'bot');
-            chatOptions.style.display = 'flex';
-        }, 1000);
+            if (response.ok && data.reply) {
+                appendMessage(data.reply, 'bot');
+            } else {
+                appendMessage("Maaf, sistem AI sedang sibuk. Anda dapat langsung menghubungi Helga via WhatsApp di 0895-4227-26505.", 'bot');
+            }
+        } catch (err) {
+            const typing = document.getElementById(typingId);
+            if (typing) typing.remove();
+            appendMessage("Koneksi ke server AI terganggu. Silakan coba lagi atau hubungi via WhatsApp.", 'bot');
+        } finally {
+            chatUserInput.disabled = false;
+            chatSendBtn.disabled = false;
+            chatUserInput.focus();
+        }
     }
 
     function appendMessage(text, sender) {
@@ -865,7 +906,13 @@
         msgDiv.classList.add('msg-bubble', sender === 'user' ? 'msg-user' : 'msg-bot');
 
         if (sender === 'bot') {
-            msgDiv.innerHTML = '<i class="bi bi-robot text-secondary me-1"></i> ' + text;
+            const formattedText = text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+                .replace(/\n/g, "<br>");
+            msgDiv.innerHTML = '<i class="bi bi-robot text-warning me-1"></i> ' + formattedText;
         } else {
             msgDiv.textContent = text;
         }
@@ -879,7 +926,7 @@
         const uniqueId = 'typing-' + Date.now();
 
         typingDiv.id = uniqueId;
-        typingDiv.classList.add('msg-bubble','msg-bot','typing-dots');
+        typingDiv.classList.add('msg-bubble', 'msg-bot', 'typing-dots');
         typingDiv.innerHTML = '<span></span><span></span><span></span>';
 
         chatMessages.appendChild(typingDiv);

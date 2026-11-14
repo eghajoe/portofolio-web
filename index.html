@@ -684,11 +684,6 @@
     </button>
 </div>
 
-    <button id="chat-toggle-btn" onclick="toggleChat()" aria-label="Buka chatbot">
-        <i class="bi bi-chat-dots-fill"></i>
-    </button>
-</div>
-
 <!-- MODAL SOFTWARE ENGINEERING -->
 <div class="modal fade" id="modalSE" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -831,7 +826,7 @@
     revealItems.forEach(item => observer.observe(item));
 
     // CHATBOT AI (TERHUBUNG KE CLOUDFLARE WORKER + GROQ)
-    const WORKER_AI_URL = "https://GANTI-DENGAN-URL-WORKER-ANDA.workers.dev";
+    const WORKER_AI_URL = "https://eghaapp-ai.visual-ymj.workers.dev";
 
     const chatWindow = document.getElementById('chat-window');
     const chatMessages = document.getElementById('chat-messages');
